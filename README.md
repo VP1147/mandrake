@@ -1,4 +1,8 @@
 # Mandrake
 
-Jogo simples sobre Teorema de Pitágoras.
-Contato do desenvolvedor: pavao364@gmail.com
+Jogo sobre matemática básica.
+Game about basic maths.
+
+Disponível em português - Aberto a traduções
+Avaliable in Portuguese - Open to translations
+
