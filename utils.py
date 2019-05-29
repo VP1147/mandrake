@@ -31,7 +31,7 @@ def clear(): # screen clear function
 
 def LogoType(): # game logo
     clear()
-    os.system("cat logotype"+str(randLogo)+".txt")
+    os.system("cat ./design/logotype"+str(randLogo)+".txt")
 
 def CheckForInt(z):
     # <DEPRECATED>

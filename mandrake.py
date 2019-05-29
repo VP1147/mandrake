@@ -13,7 +13,7 @@ def InitMenu():
     utils.LogoType()
     print("1 - Jogar")
     print("2 - Gerador")
-    print("3 - Configurações")
+    print("3 - Config")
     print("4 - Manual")
     print("5 - Sobre")
     print("x - Sair")
@@ -47,9 +47,9 @@ def InitMenu():
 
 def SettingsMenu():
     utils.LogoType()
-    print("1 - Parâmetros da geração de números")
-    print("2 - Precisão")
-    print("x - Sair")
+    print("1 - Parâmetros de geração de números")
+    print("2 - Precisão de decimais")
+    print("x - Voltar")
     SettingsMenuOpt = utils.getch()
     if SettingsMenuOpt == '1':
         utils.LogoType()
@@ -61,7 +61,7 @@ def SettingsMenu():
     elif SettingsMenuOpt == '2':
         utils.LogoType()
         try:
-            shared.FloatPrec = int(input("Casas de precisão [padrão:1]: "))
+            shared.FloatPrec = int(input("Casas decimais de precisão [Default:1]: "))
         except ValueError:
             return SettingsMenu()
         JsonFunctions.SaveAllFromCfg(SettingsMenu)
@@ -74,8 +74,8 @@ def SettingsMenu():
 def GameMenu():
     utils.LogoType()
     print("1 - Aritmética")
-    print("2 - Equação simples")
-    print("3 - Teorema de pitágoras")
+    print("2 - Equação")
+    print("3 - Teorema de Pitágoras")
     print("x - Voltar")
     GameMenuOpt = utils.getch()
     if GameMenuOpt == '1':
