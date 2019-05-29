@@ -1,0 +1,9 @@
+   Modo: 
+        Simples: O usuário informa a raiz, sem necessidade de a calcular;
+        Padrão: O usuário calcula o resultado com precisão defida.
+
+    Arranjo de variáveis:
+        1: Variável é hipotenusa;
+        2: Variável é cateto 1;
+        3: Variável é cateto 2.
+        
