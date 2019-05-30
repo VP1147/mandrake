@@ -114,4 +114,5 @@ def pitagoras(GameMenu):
                         print("O certo seria "+str(round(math.sqrt(int(pow(x,2))+(int(pow(y,2))*int(-1))),shared.FloatPrec)))
 
 def PitagorasModeLogo(): # mode-based logo
-    utils.os.system("cat ./modeLogo/logotype"+str(prop.PitagorasModeOpt)+".txt")
+    with open('./design/ModeLogo/logotype'+str(prop.PitagorasModeOpt)+'.txt') as txt:
+        print(txt.read())

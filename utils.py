@@ -26,12 +26,13 @@ def LogoGen():
     global randLogo
     randLogo = randint(0,4) # logo def
 
-def clear(): # screen clear function
-    os.system("clear")
+def clear(): # clear screen function
+    os.system('cls||clear')
 
 def LogoType(): # game logo
     clear()
-    os.system("cat ./design/logotype"+str(randLogo)+".txt")
+    with open('./design/logotype'+str(randLogo)+'.txt') as txt:
+        print(txt.read())
 
 def CheckForInt(z):
     # <DEPRECATED>
