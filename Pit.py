@@ -10,7 +10,6 @@ def PtgsMenu(GameMenu):
     print("<---- Modos ---->")
     print("1 - Simples")
     print("2 - Padrão")
-    print("3 - Padrão (Raiz exata)")
     print("x - Voltar p/ Inicio")
     prop.PtgsModeOpt = utils.getch()
     if prop.PtgsModeOpt == 'x':
@@ -26,8 +25,6 @@ def PtgsMenu(GameMenu):
             PtgsMode1(PtgsMenu,GameMenu,x,y,z)
         elif prop.PtgsModeOpt == '2':
             PtgsMode2(PtgsMenu,GameMenu,x,y,z)
-        elif prop.PtgsModeOpt == '3':
-            PtgsMode3(PtgsMenu,GameMenu,x,y,z)
 
 def PtgsMode1(PtgsMenu,GameMenu,x,y,z): # Modo simples
     if x >= y and x >= z: # Caso x maior
@@ -76,38 +73,6 @@ def PtgsMode2(PtgsMenu,GameMenu,x,y,z): # Modo padrão
             print("Certo")
         else: 
             print("O certo seria ",rs)
-
-def PtgsMode3(PtgsMenu,GameMenu,x,y,z): # Modo padrão (raiz exata)
-    if x >= y and x >= z: # Caso x maior
-        if utils.CheckForExSqrt((y**2)+(z**2)) == True:
-            print("c1 = ",y,", c2 = ",z,", hip = ")
-            rs = sqrt((y**2)+(z**2))
-            r = input()
-        else: return PtgsMode3
-    elif y >= x and y >= z: # Caso y maior
-        if utils.CheckForExSqrt((x**2)+(z**2)) == True:
-            print("c1 = ",x,", c2 = ",z,", hip = ")
-            rs = sqrt((x**2)+(z**2))
-            r = input()
-        else: return PtgsMode3
-    elif z >= x and z >= y: # Caso z maior
-        if utils.CheckForExSqrt((x**2)+(y**2)) == True:
-            print("c1 = ",x,", c2 = ",y,", hip = ")
-            rs = sqrt((x**2)+(y**2))
-            r = input()
-        else: return PtgsMode3
-
-    if utils.CheckForFloat(r) == False:
-        if r == 'exit':
-            return PtgsMenu(GameMenu)
-        else:
-            return PtgsMode3(PtgsMenu,GameMenu,x,y,z)
-    else:
-        if float(r) == rs:
-            print("Certo")
-        else: 
-            print("O certo seria ",rs)
-
 
 def PitModeLogo(): # Mode-based logo
     utils.clear()

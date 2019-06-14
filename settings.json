@@ -1,5 +1,5 @@
 {
-    "IntMin": 0,
+    "IntMin": 1,
     "IntMax": 10,
     "FloatPrec": 1
 }

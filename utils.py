@@ -3,7 +3,7 @@ import os
 from random import randint
 import shared
 import re
-import math
+from math import sqrt
 import prop
 
 class _GetchUnix:
@@ -63,9 +63,3 @@ def CheckForNegSqrt(x): # NegSqrt disabled. Func deprecated
     except ValueError:
         return True
     return False
-
-def CheckForExSqrt(x):
-    if int(math.sqrt(x)) < math.sqrt(x) or int(math.sqrt(x)) > math.sqrt(x):
-        return False # Checa se o inteiro da sqrt de x é menor ou maior que 
-    else:            # a própria sqrt de x
-        return True  # True --> É raíz exata

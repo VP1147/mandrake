@@ -4,7 +4,7 @@
 from random import randint
 import utils # utils.py file
 import Pit
-import gen
+import Gen
 import os
 import shared
 import JsonFunctions
@@ -22,7 +22,7 @@ def InitMenu():
         GameMenu()
 
     elif initMenuOpt == '2': # call generator
-        gen.GenMenu(InitMenu)
+        Gen.GenMenu(InitMenu)
 
     elif initMenuOpt == '3': # call settings menu
         SettingsMenu()
