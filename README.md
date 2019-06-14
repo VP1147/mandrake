@@ -6,3 +6,4 @@ Game about basic maths.
 Disponível em português - Aberto a traduções
 Avaliable in Portuguese - Open to translations
 
+Open mandrake.py to start the program.
