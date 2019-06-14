@@ -1,4 +1,5 @@
 # Objects visible for specific functions
 VarArrangeOpt = ''
-PitagorasModeOpt = ''
+PtgsOpt = ''
 AritOpt = ''
+RandLogo = 0 # From utils

@@ -1,4 +1,6 @@
 # library for Mandrake | by vp1147
+# DEPRECATED
+
 import utils # utils.py lib
 import math
 import shared

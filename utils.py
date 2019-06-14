@@ -4,6 +4,7 @@ from random import randint
 import shared
 import re
 import math
+import prop
 
 class _GetchUnix:
     def __init__(self):
@@ -23,18 +24,17 @@ class _GetchUnix:
 getch = _GetchUnix()
 
 def LogoGen():
-    global randLogo
-    randLogo = randint(0,4) # logo def
+    prop.RandLogo = randint(0,4) # Random logo generator
 
 def clear(): # clear screen function
-    os.system('cls||clear')
+    os.system('cls||clear') # For Windows-Linux compatibility
 
 def LogoType(): # game logo
     clear()
-    with open('./design/logotype'+str(randLogo)+'.txt') as txt:
+    with open('./design/logotype'+str(prop.RandLogo)+'.txt') as txt:
         print(txt.read())
 
-def CheckForInt(z):
+def CheckForInt(x): # Following the "vp1147's box analogy"
     # <DEPRECATED>
     #pattern = re.compile("^[0-9][0-9]*\.?[0-9]*") # Int number pattern
     #confirm = re.search(pattern,str(z)) # Verify 'z'
@@ -43,23 +43,23 @@ def CheckForInt(z):
     #elif confirm:
     #    return True
     try:
-        int(z)
+        int(x)
     except ValueError:
         return False
     except:
         return True
 
-def CheckForFloat(z):
-    try:
-        float(z)
+def CheckForFloat(x): # Leitura de saída:
+    try:              # True --> É float
+        float(x)      # False --> Não é float
     except ValueError:
         return False
     except:
         return True
 
-def CheckForNegSqrt(r):
+def CheckForNegSqrt(x): # NegSqrt disabled. Func deprecated
     try:
-        math.sqrt(r)
+        math.sqrt(x)
     except ValueError:
         return True
     return False

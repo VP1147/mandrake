@@ -3,7 +3,7 @@
 
 from random import randint
 import utils # utils.py file
-import pitagoras # pitagoras.py file
+import Pit
 import gen
 import os
 import shared
@@ -82,14 +82,15 @@ def GameMenu():
         import Arit
         Arit.AritMenu(GameMenu)
     if GameMenuOpt == '3':
-        import pitagoras # pitagoras.py file
-        pitagoras.PitagorasMenu(GameMenu)
+        Pit.PtgsMenu(GameMenu)
     elif GameMenuOpt == '2':
         Eq.EqMenu(GameMenu)
     elif GameMenuOpt == 'x':
         return InitMenu()
     else:
         return GameMenu()
+
+# --- Game Start --- #
 
 utils.LogoGen()
 InitMenu()
