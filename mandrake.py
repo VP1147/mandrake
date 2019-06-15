@@ -8,6 +8,7 @@ import Gen
 import os
 import shared
 import JsonFunctions
+import Bhaskara
 
 def InitMenu():
     utils.LogoType()
@@ -74,7 +75,7 @@ def SettingsMenu():
 def GameMenu():
     utils.LogoType()
     print("1 - Aritmética")
-    print("2 - Equação")
+    print("2 - Equação quadrática")
     print("3 - Teorema de Pitágoras")
     print("x - Voltar")
     GameMenuOpt = utils.getch()
@@ -84,7 +85,7 @@ def GameMenu():
     if GameMenuOpt == '3':
         Pit.PtgsMenu(GameMenu)
     elif GameMenuOpt == '2':
-        Eq.EqMenu(GameMenu)
+        Bhaskara.BskrMenu(GameMenu)
     elif GameMenuOpt == 'x':
         return InitMenu()
     else:

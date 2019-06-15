@@ -4,3 +4,4 @@ PtgsOpt = ''
 AritOpt = ''
 RandLogo = 0 # From utils
 GenPtgsModeOpt = ''
+BskrModeOpt = ''

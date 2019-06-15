@@ -2,7 +2,6 @@
 import utils
 import shared
 import prop
-import JsonFunctions
 from math import sqrt
 
 def PtgsMenu(GameMenu):
