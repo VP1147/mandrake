@@ -6,12 +6,14 @@ from math import sqrt
 
 def BskrMenu(GameMenu):
     utils.LogoType()
+    print("<---Modo--->")
     print("1 - Simples")
     print("2 - Padrão")
     print("x - Voltar")
     prop.BskrModeOpt = utils.getch()
     if prop.BskrModeOpt == 'x':
         return GameMenu()
+    BskrModeLogo()
     print("<'exit' para sair>")
     print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
     while 1:
@@ -25,8 +27,7 @@ def BskrMenu(GameMenu):
 
 def BskrMode1(GameMenu,BskrMenu,a,b,c): # Modo simples
     rs = (b**2)-4*a*c # Calcula delta
-    print(a,"*x^2 + ",b,"*x + (",c,"). Delta = ")
-    r = input()
+    r = input(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+"). Delta = ")
     if utils.CheckForFloat(r) == False: # Verificação para float
         if r == 'exit':
             return BskrMenu(GameMenu)
@@ -36,12 +37,12 @@ def BskrMode1(GameMenu,BskrMenu,a,b,c): # Modo simples
         if float(r) == rs:
             print("Certo")
         else:
-            print("O certo seria ",rs)
+            print("O certo seria "+str(rs))
 
 def BskrMode2(GameMenu,BskrMenu,a,b,c): # Modo padrão
-    rs1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),shared.FloatPrec)
-    rs2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),shared.FloatPrec)
-    print(a,"*x^2 + ",b,"*x + (",c,")")
+    rs1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),shared.FloatPrec) # Calcula x1
+    rs2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),shared.FloatPrec) # Calcula x2
+    print(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+")")
     r1 = input("x1 = ")
     r2 = input("x2 = ")
     if utils.CheckForFloat(r1) == False or utils.CheckForFloat(r2) == False:
@@ -53,5 +54,9 @@ def BskrMode2(GameMenu,BskrMenu,a,b,c): # Modo padrão
         if (float(r1) == rs1 and float(r2) == rs2) or (float(r1) == rs2 and float(r2) == rs2):
             print("Certo")
         else:
-            print("O certo seria",rs1,"e",rs2)
-    
+            print("O certo seria "+str(rs1)+" e "+str(rs2))
+            
+def BskrModeLogo(): # Mode-based logo
+    utils.clear()
+    with open('./design/ModeLogo/logotype'+str(prop.BskrModeOpt)+'.txt') as txt:
+        print(txt.read())

@@ -2,6 +2,7 @@
 VarArrangeOpt = ''
 PtgsOpt = ''
 AritOpt = ''
-RandLogo = 0 # From utils
+RandLogo = 0
 GenPtgsModeOpt = ''
+GenBskrModeOpt = ''
 BskrModeOpt = ''

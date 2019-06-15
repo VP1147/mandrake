@@ -6,7 +6,7 @@ from math import sqrt
 
 def PtgsMenu(GameMenu):
     utils.LogoType()
-    print("<---- Modos ---->")
+    print("<---Modo--->")
     print("1 - Simples")
     print("2 - Padrão")
     print("x - Voltar p/ Inicio")
@@ -27,15 +27,15 @@ def PtgsMenu(GameMenu):
 
 def PtgsMode1(PtgsMenu,GameMenu,x,y,z): # Modo simples
     if x >= y and x >= z: # Caso x maior
-        print("c1 = ",y,", c2 = ",z,", hip = raiz quadrada de ")
+        print("c1 = "+str(y)+", c2 = "+str(z)+", hip = raiz quadrada de ")
         rs = (y**2)+(z**2)
         r = input()
     elif y >= x and y >= z: # Caso y maior
-        print("c1 = ",x,", c2 = ",z,", hip = raiz quadrada de ")
+        print("c1 = "+str(x)+", c2 = "+str(z)+", hip = raiz quadrada de ")
         rs = (x**2)+(z**2)
         r = input()
     elif z >= x and z >= y: # Caso z maior
-        print("c1 = ",x,", c2 = ",y,", hip = raiz quadrada de ")
+        print("c1 = "+str(x)+", c2 = "+str(y)+", hip = raiz quadrada de ")
         rs = (x**2)+(y**2)
         r = input()
     if utils.CheckForFloat(r) == False: # Verificação para float
@@ -47,19 +47,19 @@ def PtgsMode1(PtgsMenu,GameMenu,x,y,z): # Modo simples
         if float(r) == rs:
             print("Certo")
         else: 
-            print("O certo seria ",rs)
+            print("O certo seria "+str(rs))
 
 def PtgsMode2(PtgsMenu,GameMenu,x,y,z): # Modo padrão
     if x >= y and x >= z: # Caso x maior
-        print("c1 = ",y,", c2 = ",z,", hip = ")
+        print("c1 = "+str(y)+", c2 = "+str(z)+", hip = ")
         rs = round(sqrt((y**2)+(z**2)),shared.FloatPrec)
         r = input()
     elif y >= x and y >= z: # Caso y maior
-        print("c1 = ",x,", c2 = ",z,", hip = ")
+        print("c1 = "+str(x)+", c2 = "+str(z)+", hip = ")
         rs = round(sqrt((x**2)+(z**2)),shared.FloatPrec)
         r = input()
     elif z >= x and z >= y: # Caso z maior
-        print("c1 = ",x,", c2 = ",y,", hip = ")
+        print("c1 = "+str(x)+", c2 = "+str(y)+", hip = ")
         rs = round(sqrt((x**2)+(y**2)),shared.FloatPrec)
         r = input()
     if utils.CheckForFloat(r) == False:
@@ -71,7 +71,7 @@ def PtgsMode2(PtgsMenu,GameMenu,x,y,z): # Modo padrão
         if float(r) == rs:
             print("Certo")
         else: 
-            print("O certo seria ",rs)
+            print("O certo seria "+str(rs))
 
 def PitModeLogo(): # Mode-based logo
     utils.clear()
