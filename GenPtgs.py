@@ -1,3 +1,4 @@
+# # -*- encoding: utf-8 -*-
 # Library for Mandrake (Gen functions) | By vp1147
 
 import shared

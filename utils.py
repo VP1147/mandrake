@@ -1,3 +1,4 @@
+# # -*- encoding: utf-8 -*-
 # library for Mandrake | by vp1147
 import os
 from random import randint

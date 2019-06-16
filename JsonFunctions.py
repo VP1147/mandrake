@@ -1,3 +1,4 @@
+# # -*- encoding: utf-8 -*-
 # JSON functions lib for Mandrake
 import utils
 import json
