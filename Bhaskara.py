@@ -27,7 +27,7 @@ def BskrMenu(GameMenu):
             BskrMode2(GameMenu,BskrMenu,a,b,c)
 
 def BskrMode1(GameMenu,BskrMenu,a,b,c): # Modo simples
-    rs = (b**2)-4*a*c # Calcula delta
+    rs = utils.SolveDelta(a,b,c) # Calcula delta
     r = input(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+"). Delta = ")
     if utils.CheckForFloat(r) == False: # Verificação para float
         if r == 'exit':
@@ -41,8 +41,7 @@ def BskrMode1(GameMenu,BskrMenu,a,b,c): # Modo simples
             print("O certo seria "+str(rs))
 
 def BskrMode2(GameMenu,BskrMenu,a,b,c): # Modo padrão
-    rs1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),shared.FloatPrec) # Calcula x1
-    rs2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),shared.FloatPrec) # Calcula x2
+    rs1,rs2 = utils.SolveBhaskara(a,b,c,shared.FloatPrec) # Calcula x1 e x2
     print(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+")")
     r1 = input("x1 = ")
     r2 = input("x2 = ")
@@ -50,9 +49,9 @@ def BskrMode2(GameMenu,BskrMenu,a,b,c): # Modo padrão
         if r1 == 'exit' or r2 == 'exit':
             return BskrMenu(GameMenu)
         else:
-            return BskrMode2(GameMenu,BskrMenu,a,b,c)
+            return BskarMode2(GameMenu,BskrMenu,a,b,c)
     else:
-        if (float(r1) == rs1 and float(r2) == rs2) or (float(r1) == rs2 and float(r2) == rs2):
+        if (float(r1) == rs1 and float(r2) == rs2) or (float(r1) == rs2 and float(r2) == rs1):
             print("Certo")
         else:
             print("O certo seria "+str(rs1)+" e "+str(rs2))

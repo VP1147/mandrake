@@ -64,3 +64,11 @@ def CheckForNegSqrt(x): # NegSqrt disabled. Func deprecated
     except ValueError:
         return True
     return False
+
+def SolveDelta(a,b,c): # Recebe a, b e c. Retorna o Delta.
+    return ((b**2)-4*a*c)
+
+def SolveBhaskara(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes.
+    x1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
+    x2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
+    return x1,x2 # return tuple
