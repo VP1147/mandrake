@@ -9,6 +9,7 @@ import os
 import shared
 import JsonFunctions
 import Bhaskara
+import FQuad
 
 def InitMenu():
     utils.LogoType()
@@ -77,6 +78,7 @@ def GameMenu():
     print("1 - Aritmética")
     print("2 - Equação quadrática")
     print("3 - Teorema de Pitágoras")
+    print("4 - Função Quadrática")
     print("x - Voltar")
     GameMenuOpt = utils.getch()
     if GameMenuOpt == '1':
@@ -86,6 +88,8 @@ def GameMenu():
         Pit.PtgsMenu(GameMenu)
     elif GameMenuOpt == '2':
         Bhaskara.BskrMenu(GameMenu)
+    elif GameMenuOpt == '4':
+        FQuad.QuadFMenu(GameMenu)
     elif GameMenuOpt == 'x':
         return InitMenu()
     else:

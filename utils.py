@@ -72,3 +72,22 @@ def SolveBhaskara(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes.
     x1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
     x2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
     return x1,x2 # return tuple
+
+def SolveFQuad(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes, coordenadas
+    # do vértice e interseção com y.
+    x1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
+    x2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
+    xv = round(float((b*-1)/(2*a)),FloatPrec)
+    yv = round(float((SolveDelta(a,b,c)*-1)/(4*a)),FloatPrec)
+    return x1,x2,xv,yv
+    # interseção com y = c
+
+def CheckForFloatList(List): # Verifica se valor em uma lista é float.
+    for i in range(len(List)):
+        if CheckForFloat(List[i]) == False:
+            return False
+        
+def CheckForOneStringList(List,String): # Verifica se há string específica em uma lista.
+    for i in range(len(List)):      # Leitura: True --> Há tal string. False --> Ñ há
+        if List[i] == String:
+            return True

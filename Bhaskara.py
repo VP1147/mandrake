@@ -34,27 +34,25 @@ def BskrMode1(GameMenu,BskrMenu,a,b,c): # Modo simples
             return BskrMenu(GameMenu)
         else:
             return BskrMode1(BskrMenu,GameMenu,a,b,c)
+    if float(r) == rs:
+        print("Certo")
     else:
-        if float(r) == rs:
-            print("Certo")
-        else:
-            print("O certo seria "+str(rs))
+        print("O certo seria "+str(rs))
 
 def BskrMode2(GameMenu,BskrMenu,a,b,c): # Modo padrão
     rs1,rs2 = utils.SolveBhaskara(a,b,c,shared.FloatPrec) # Calcula x1 e x2
     print(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+")")
     r1 = input("x1 = ")
+    if r1 == 'exit': return BskrMenu(GameMenu)
     r2 = input("x2 = ")
-    if utils.CheckForFloat(r1) == False or utils.CheckForFloat(r2) == False:
-        if r1 == 'exit' or r2 == 'exit':
-            return BskrMenu(GameMenu)
-        else:
-            return BskarMode2(GameMenu,BskrMenu,a,b,c)
+    if r2 == 'exit': return BskrMenu(GameMenu)
+    r = [r1,r2]
+    if utils.CheckForFloatList(r) == False:
+        return BskrMode2(GameMenu,BskrMenu,a,b,c)
+    if (float(r1) == rs1 and float(r2) == rs2) or (float(r1) == rs2 and float(r2) == rs1):
+        print("Certo")
     else:
-        if (float(r1) == rs1 and float(r2) == rs2) or (float(r1) == rs2 and float(r2) == rs1):
-            print("Certo")
-        else:
-            print("O certo seria "+str(rs1)+" e "+str(rs2))
+        print("O certo seria : "+str(rs1)+" e "+str(rs2))
             
 def BskrModeLogo(): # Mode-based logo
     utils.clear()
