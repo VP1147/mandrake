@@ -1,9 +1,7 @@
 # Mandrake
+Game about basic math.
 
-Jogo sobre matemática básica.
-Game about basic maths.
-
-Disponível em português - Aberto a traduções
 Avaliable in Portuguese - Open to translations
 
-Open mandrake.py to start the program.
+# How to start
+Open mandrake.py with a python interpreter to start.
