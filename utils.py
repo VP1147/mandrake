@@ -91,3 +91,7 @@ def CheckForOneStringList(List,String): # Verifica se há string específica em 
     for i in range(len(List)):      # Leitura: True --> Há tal string. False --> Ñ há
         if List[i] == String:
             return True
+
+def ReadTxt(File):
+    with open(File) as txt:
+        print(txt.read())

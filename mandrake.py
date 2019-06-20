@@ -18,32 +18,30 @@ def InitMenu():
     print("3 - Config")
     print("4 - Manual")
     print("5 - Sobre")
+    print("6 - Licença")
     print("x - Sair")
-    initMenuOpt = utils.getch() # call getch from utils.py
-    if initMenuOpt == '1':
-        GameMenu()
-
-    elif initMenuOpt == '2': # call generator
-        Gen.GenMenu(InitMenu)
-
-    elif initMenuOpt == '3': # call settings menu
-        SettingsMenu()
-
-    elif initMenuOpt == '4': # call man page
+    InitMenuOpt = utils.getch()
+    if InitMenuOpt == '1': GameMenu()
+    elif InitMenuOpt == '2': Gen.GenMenu(InitMenu)
+    elif InitMenuOpt == '3': SettingsMenu()
+    elif InitMenuOpt == '4': # call man page
         utils.LogoType()
-        os.system("cat man.txt")
+        utils.ReadTxt('man.txt')
         utils.getch()
         return InitMenu()
-
-    elif initMenuOpt == '5':
+    elif InitMenuOpt == '5':
         utils.LogoType()
-        os.system("cat info.txt")
+        utils.ReadTxt('info.txt')
         utils.getch()
         return InitMenu()
-    elif initMenuOpt == 'x': # exit program
+    elif InitMenuOpt == '6':
+        utils.LogoType()
+        utils.ReadTxt('LICENSE')
+        utils.getch()
+        return InitMenu()
+    elif InitMenuOpt == 'x': # exit program
         utils.clear()
         exit()
-
     else:
         return InitMenu()
 

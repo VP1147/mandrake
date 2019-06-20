@@ -10,7 +10,7 @@ def GenMenu(InitMenu):
     utils.LogoType()
     print("1 - Teorema de Pitágoras")
     print("2 - Equação quadrática")
-    print("x - Sair")
+    print("x - Voltar")
     GenMenuOpt = utils.getch()
     if GenMenuOpt == '1':
         GenPtgs.PtgsGen()

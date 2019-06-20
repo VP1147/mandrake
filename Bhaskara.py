@@ -14,7 +14,8 @@ def BskrMenu(GameMenu):
     prop.BskrModeOpt = utils.getch()
     if prop.BskrModeOpt == 'x':
         return GameMenu()
-    BskrModeLogo()
+    utils.clear()
+    utils.ReadTxt(('./design/ModeLogo/logotype'+str(prop.BskrModeOpt)+'.txt')) # Mode logo
     print("<'exit' para sair>")
     print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
     while 1:
@@ -53,8 +54,3 @@ def BskrMode2(GameMenu,BskrMenu,a,b,c): # Modo padrão
         print("Certo")
     else:
         print("O certo seria : "+str(rs1)+" e "+str(rs2))
-            
-def BskrModeLogo(): # Mode-based logo
-    utils.clear()
-    with open('./design/ModeLogo/logotype'+str(prop.BskrModeOpt)+'.txt') as txt:
-        print(txt.read())

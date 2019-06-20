@@ -4,7 +4,13 @@
     # Modo: 
         # 1 - Simples: O usuário informa a raiz, sem necessidade de a calcular;
         # 2 - Padrão: O usuário calcula o resultado com uma certa precisão definível.
+    # Config: Necessário usar 1 como valor mínimo nos parâmetros do gerador de inteiros
+        aleatórios.
+
 # Equação quadrática:
     # Modo:
         # 1 - Simples: O usuário informa o delta;
         # 2 - Padrão: O usuário informa as raízes (x1 e x2) com uma certa precisão definível.
+        
+# Função Quadrática: O usuário informa as raízes (x1 e x2), as coordenadas do vértice
+    (Xv e Yv) e interseção com o eixo y da parábola.

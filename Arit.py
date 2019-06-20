@@ -12,71 +12,53 @@ def AritMenu(GameMenu):
     print("4 - Divisão")
     print("x - Voltar")
     prop.AritOpt = utils.getch()
-    if prop.AritOpt == 'x':
-        return GameMenu()
+    if prop.AritOpt == 'x': return GameMenu()
     utils.clear()
     print("<'exit' para sair>")
-    if prop.AritOpt == '4':
-        print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)")
-    while 1:
-        Arit(GameMenu)
+    if prop.AritOpt == '4': print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)")
+    while 1: Arit(GameMenu)
 
 def Arit(GameMenu):
     x = utils.randint(shared.IntMin,shared.IntMax)
     y = utils.randint(shared.IntMin,shared.IntMax)
     if prop.AritOpt == '1':
-        z = str(input(str(x)+" + "+str(y)+" = "))
-        if utils.CheckForFloat(z) == False:
-            if z == 'exit':
-                return AritMenu(GameMenu)
-            else:
-                return Arit(GameMenu)
+        r = input(str(x)+" + "+str(y)+" = ")
+        rs = x+y
+        if utils.CheckForFloat(r) == False:
+            if r == 'exit': return AritMenu(GameMenu)
+            else: return Arit(GameMenu)
         else:
-            if float(z) == float(x+y):
-                print("Correto")
-            else:
-                print("O certo seria "+str(x+y))
+            if float(r) == rs: print("Correto")
+            else: print("O certo seria "+str(rs))
     elif prop.AritOpt == '2':
-        z = str(input(str(x)+" - "+str(y)+" = "))
-        if utils.CheckForFloat(z) == False:
-            if z == 'exit':
-                return AritMenu(GameMenu)
-            else:
-                return Arit(GameMenu)
+        r = input(str(x)+" - "+str(y)+" = ")
+        rs = x-y
+        if utils.CheckForFloat(r) == False:
+            if r == 'exit': return AritMenu(GameMenu)
+            else: return Arit(GameMenu)
         else:
-            if float(z) == float(x-y):
-                print("Correto")
-            else:
-                print("O certo seria "+str(x-y))
+            if float(r) == rs: print("Correto")
+            else: print("O certo seria "+str(rs))
     elif prop.AritOpt == '3':
-        z = str(input(str(x)+" x "+str(y)+" = "))
-        if utils.CheckForFloat(z) == False:
-            if z == 'exit':
-                return AritMenu(GameMenu)
-            else:
-                return Arit(GameMenu)
+        r = input(str(x)+" x "+str(y)+" = ")
+        rs = x*y
+        if utils.CheckForFloat(r) == False:
+            if r == 'exit': return AritMenu(GameMenu)
+            else: return Arit(GameMenu)
         else:
-            if float(z) == float(x*y):
-                print("Correto")
-            else:
-                print("O certo seria "+str(x*y))
+            if float(r) == rs: print("Correto")
+            else: print("O certo seria "+str(rs))
                 
     elif prop.AritOpt == '4':
-        try:
-            float(x/y)
-        except ZeroDivisionError:
-            return Arit(GameMenu)
-        z = str(input(str(x)+" / "+str(y)+" = "))
-        if utils.CheckForFloat(z) == False:
-            if z == 'exit':
-                return AritMenu(GameMenu)
-            else:
-                return Arit(GameMenu)
+        try: x/y
+        except ZeroDivisionError: return Arit(GameMenu)
+        r = input(str(x)+" / "+str(y)+" = ")
+        rs = round((x/y),shared.FloatPrec)
+        if utils.CheckForFloat(r) == False:
+            if r == 'exit': return AritMenu(GameMenu)
+            else: return Arit(GameMenu)
         else:
-            
-            if float(z) == float(round((x/y),shared.FloatPrec)):
-                print("Correto")
-            else:
-                print("O certo seria "+str(round((x/y),shared.FloatPrec)))
+            if float(r) == rs: print("Correto")
+            else: print("O certo seria "+str(rs))
     else:
         return AritMenu(GameMenu)
