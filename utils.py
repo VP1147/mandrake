@@ -1,18 +1,19 @@
 # # -*- encoding: utf-8 -*-
 # library for Mandrake | by vp1147
+
 import os
 from random import randint
 import shared
-import re
 from math import sqrt
 import prop
+import sys
 
 class _GetchUnix:
     def __init__(self):
-        import tty, sys
+        import tty
 
     def __call__(self):
-        import sys, tty, termios
+        import tty, termios
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
         try:
@@ -23,6 +24,9 @@ class _GetchUnix:
         return ch
 
 getch = _GetchUnix()
+
+def exit():
+    sys.exit()
 
 def LogoGen():
     prop.RandLogo = randint(0,4) # Random logo generator

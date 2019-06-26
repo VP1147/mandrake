@@ -41,7 +41,7 @@ def InitMenu():
         return InitMenu()
     elif InitMenuOpt == 'x': # exit program
         utils.clear()
-        exit()
+        utils.exit()
     else:
         return InitMenu()
 
