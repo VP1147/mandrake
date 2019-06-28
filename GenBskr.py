@@ -24,14 +24,13 @@ def BskrGen():
     utils.getch()
             
 def GenBskrMode1(a,b,c):
-    rs = (b**2)-4*a*c # Calcula delta
+    rs = utils.SolveDelta(a,b,c) # Calcula delta
     print(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+")")
     print("a = "+str(a)+" | b = "+str(b)+" | c = "+str(c)) # Mostra a, b e c
     print("Delta = "+str(rs))
 
 def GenBskrMode2(a,b,c):
-    rs1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),shared.FloatPrec) # Calcula x1
-    rs2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),shared.FloatPrec) # Calcula x2
+    rs1,rs2 = utils.SolveBhaskara(a,b,c,shared.FloatPrec) # Calcula x1 e x2
     print(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+")")
     print("a = "+str(a)+" | b = "+str(b)+" | c = "+str(c)) # Mostra a, b e c
     print("x1 = "+str(rs1)+" | x2 = "+str(rs2))

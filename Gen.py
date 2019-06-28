@@ -5,11 +5,13 @@ import utils
 import prop
 import GenPtgs
 import GenBskr
+import GenFQuad
 
 def GenMenu(InitMenu):
     utils.LogoType()
     print("1 - Teorema de Pitágoras")
     print("2 - Equação quadrática")
+    print("3 - Função quadrática")
     print("x - Voltar")
     GenMenuOpt = utils.getch()
     if GenMenuOpt == '1':
@@ -17,6 +19,9 @@ def GenMenu(InitMenu):
         return GenMenu(InitMenu)
     elif GenMenuOpt == '2':
         GenBskr.BskrGen()
+        return GenMenu(InitMenu)
+    elif GenMenuOpt == '3':
+        GenFQuad.FQuadGen()
         return GenMenu(InitMenu)
     elif GenMenuOpt == 'x':
         return InitMenu()
