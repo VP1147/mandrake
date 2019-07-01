@@ -75,15 +75,15 @@ def SolveDelta(a,b,c): # Recebe a, b e c. Retorna o Delta.
 def SolveBhaskara(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes.
     x1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
     x2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
-    return x1,x2 # return tuple
+    return x1,x2 # Retorna tupla
 
-def SolveFQuad(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes, coordenadas
-    # do vértice e interseção com y.
-    x1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
-    x2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
-    xv = round(float((b*-1)/(2*a)),FloatPrec)
-    yv = round(float((SolveDelta(a,b,c)*-1)/(4*a)),FloatPrec)
-    return x1,x2,xv,yv
+def SolveFQuad(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes e as coordenadas
+                                 # do vértice.
+    x1 = round((FloatFormat((b*-1)+round(sqrt(SolveDelta(a,b,c)),FloatPrec))/(2*a)),FloatPrec)
+    x2 = round((FloatFormat((b*-1)-round(sqrt(SolveDelta(a,b,c)),FloatPrec))/(2*a)),FloatPrec)
+    xv = round(((b*-1)/(2*a)),FloatPrec)
+    yv = round(((SolveDelta(a,b,c)*-1)/(4*a)),FloatPrec)
+    return x1,x2,xv,yv # Retorna tupla
     # interseção com y = c
 
 def CheckForFloatList(List): # Verifica se valor em uma lista é float.
@@ -99,3 +99,5 @@ def CheckForOneStringList(List,String): # Verifica se há string específica em 
 def ReadTxt(File):
     with open(File) as txt:
         print(txt.read())
+def FloatFormat(x): # Corrige imprecisão ao operar valores flutuantes.
+    return float(format((x),'8f'))
