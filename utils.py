@@ -29,7 +29,7 @@ def exit():
     sys.exit()
 
 def LogoGen():
-    prop.RandLogo = randint(0,4) # Random logo generator
+    prop.RandLogo = randint(0,7) # Random logo generator
 
 def clear(): # clear screen function
     os.system('cls||clear') # For Windows-Linux compatibility
