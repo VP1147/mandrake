@@ -19,21 +19,29 @@ def QuadF(GameMenu):
     c = (utils.randint(shared.IntMin,shared.IntMax))*-1 # Para evitar delta (-)
     x1rs, x2rs, xvrs, yvrs = utils.SolveFQuad(a,b,c,shared.FloatPrec) # Calcula
                                                                  # x1, x2, Xv e Yv.
+    drs = utils.SolveDelta(a,b,c) # Calcula delta
     print(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+")")
+    dr = input("Delta = ")
+    QuadFVerify(dr,drs,GameMenu)
     x1r = input("x1 = ")
-    if x1r == 'exit': return GameMenu()
+    QuadFVerify(x1r,(x1rs,x2rs),GameMenu)
     x2r = input("x2 = ")
-    if x1r == 'exit': return GameMenu()
+    QuadFVerify(x2r,(x1rs,x2rs),GameMenu)
     xvr = input("Xv = ")
-    if x1r == 'exit': return GameMenu()
+    QuadFVerify(xvr,xvrs,GameMenu)
     yvr = input("Yv = ")
-    if x1r == 'exit': return GameMenu()
+    QuadFVerify(yvr,yvrs,GameMenu)
     iyr = input("Interseção com y = ")
-    if x1r == 'exit': return GameMenu()
-    r = [x1r,x2r,xvr,yvr,iyr]
-    if utils.CheckForFloatList(r) == False:
-        return QuadF(GameMenu)
-    if (float(x1r) == x1rs and float(x2r) == x2rs) or (float(x1r) == x2rs and float(x2) == x1rs)  and float(xvr) == xvrs and float(yvr) == yvrs and iyr == c:
-        print("Certo") # Difícil acontecer :)
+    QuadFVerify(iyr,c,GameMenu)
+
+def QuadFVerify(x,r,GameMenu):
+    if utils.CheckForFloat(x) == False:
+        if x == 'exit': return GameMenu()
+        else: return QuadF(GameMenu)
+    if isinstance(r,tuple) == True: # Caso r for tupla
+        r1,r2 = r
+        if float(x) == r1 or float(x) == r2: print("Certo")
+        else: print("O correto seria "+str(r1)+" ou "+str(r2)+".")
     else:
-        print("O certo seria "+str(x1rs)+", "+str(x2rs)+", "+str(xvrs)+", "+str(yvrs)+", "+str(c))
+        if float(x) == r: print("Certo")
+        else: print("O correto seria "+str(r)+".")

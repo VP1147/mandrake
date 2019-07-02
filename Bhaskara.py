@@ -28,29 +28,29 @@ def BskrMenu(GameMenu):
             BskrMode2(GameMenu,BskrMenu,a,b,c)
 
 def BskrMode1(GameMenu,BskrMenu,a,b,c): # Modo simples
-    rs = utils.SolveDelta(a,b,c) # Calcula delta
-    r = input(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+"). Delta = ")
-    if utils.CheckForFloat(r) == False: # Verificação para float
-        if r == 'exit':
-            return BskrMenu(GameMenu)
-        else:
-            return BskrMode1(BskrMenu,GameMenu,a,b,c)
-    if float(r) == rs:
-        print("Certo")
-    else:
-        print("O certo seria "+str(rs))
+    drs = utils.SolveDelta(a,b,c) # Calcula delta
+    dr = input(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+"). Delta = ")
+    BskrVerify(dr,drs,GameMenu)
 
 def BskrMode2(GameMenu,BskrMenu,a,b,c): # Modo padrão
-    rs1,rs2 = utils.SolveBhaskara(a,b,c,shared.FloatPrec) # Calcula x1 e x2
+    x1rs,x2rs = utils.SolveBhaskara(a,b,c,shared.FloatPrec) # Calcula x1 e x2
+    drs = utils.SolveDelta(a,b,c) # Calcula delta
     print(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+")")
-    r1 = input("x1 = ")
-    if r1 == 'exit': return BskrMenu(GameMenu)
-    r2 = input("x2 = ")
-    if r2 == 'exit': return BskrMenu(GameMenu)
-    r = [r1,r2]
-    if utils.CheckForFloatList(r) == False:
-        return BskrMode2(GameMenu,BskrMenu,a,b,c)
-    if (float(r1) == rs1 and float(r2) == rs2) or (float(r1) == rs2 and float(r2) == rs1):
-        print("Certo")
+    dr = input("Delta = ")
+    BskrVerify(dr,drs,GameMenu)
+    x1r = input("x1 = ")
+    BskrVerify(x1r,(x1rs,x2rs),GameMenu)
+    x2r = input("x2 = ")
+    BskrVerify(x2r,(x1rs,x2rs),GameMenu)
+
+def BskrVerify(x,r,GameMenu):
+    if utils.CheckForFloat(x) == False:
+        if x == 'exit': return BskrMenu(GameMenu)
+        else: return BskrMode2(GameMenu,BskrMenu,a,b,c)
+    if isinstance(r,tuple) == True: # Caso r for tupla
+        r1,r2 = r
+        if float(x) == r1 or float(x) == r2: print("Certo")
+        else: print("O correto seria "+str(r1)+" ou "+str(r2)+".")
     else:
-        print("O certo seria : "+str(rs1)+" e "+str(rs2))
+        if float(x) == r: print("Certo")
+        else: print("O correto seria "+str(r)+".")
