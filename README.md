@@ -7,7 +7,7 @@ Avaliable in Portuguese - Open to translations
 ## Python intepreter 
 Open mandrake.py with a python3 interpreter to start.
 ## On binary file
-Alternatively, you can start the program by the binary file:
+Alternatively, you can start the program by the binary file (only 64 bits for the time being):
 ```
 $ cd ./mandrake/dist/mandrake/
 $ ./mandrake
