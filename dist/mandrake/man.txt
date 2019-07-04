@@ -10,7 +10,7 @@
 # Equação quadrática:
     # Modo:
         # 1 - Simples: O usuário informa o delta;
-        # 2 - Padrão: O usuário informa as raízes (x1 e x2) com uma certa precisão definível.
+        # 2 - Padrão: O usuário informa o delta e as raízes (x1 e x2) com precisão definível.
         
-# Função Quadrática: O usuário informa as raízes (x1 e x2), as coordenadas do vértice
-    (Xv e Yv) e interseção com o eixo y da parábola.
+# Função Quadrática: O usuário informa o delta, as raízes (x1 e x2), as coordenadas do vértice
+    (Xv e Yv) e interseção com o eixo y da parábola com precisão definível.
