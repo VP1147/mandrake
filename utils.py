@@ -99,5 +99,15 @@ def CheckForOneStringList(List,String): # Verifica se há string específica em 
 def ReadTxt(File):
     with open(File) as txt:
         print(txt.read())
+
 def FloatFormat(x): # Corrige imprecisão ao operar valores flutuantes.
     return float(format((x),'8f'))
+
+#class rl(Str):
+#    def LangPath(Lang):
+#        if shared.Lang == 'pt_br':
+#            return ('./languages/pt_br')
+#    def ReadJson(Str,Path): # Recebe local do .json e nome; retorna valor corresp. 
+#        data = json.loads(open(Path).read())
+#        return data[Str]
+#rl(Str) = rl(Str)

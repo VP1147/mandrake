@@ -10,7 +10,7 @@ import shared
 import JsonFunctions
 import Bhaskara
 import FQuad
-
+ 
 def InitMenu():
     utils.LogoType()
     print("1 - Jogar")
