@@ -4,10 +4,10 @@ import utils
 import json
 import shared
 
-def SetMaxMin(MaxMinDict,SettingsMenu):
-    with open('settings.json','w') as ToDump:
-        json.dump(MaxMinDict,ToDump, indent=4)
-    return SettingsMenu()
+#def SetMaxMin(MaxMinDict,SettingsMenu):
+#    with open('settings.json','w') as ToDump:
+#        json.dump(MaxMinDict,ToDump, indent=4)
+#    return SettingsMenu()
 
 # def ReadMaxMin(): # Exec at start
 #    with open('settings.json','r') as ToRead:
@@ -20,3 +20,7 @@ def SaveAllFromCfg(SettingsMenu):
     with open('settings.json','w') as ToSave:
         json.dump(DictAll, ToSave, indent=4)
     return SettingsMenu()
+
+def ReadJson(Str,Path): # Recebe local do .json e nome; retorna valor corresp. 
+    data = json.loads(open(Path).read())
+    return data[Str]
