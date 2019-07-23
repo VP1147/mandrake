@@ -111,3 +111,14 @@ def FloatFormat(x): # Corrige imprecisão ao operar valores flutuantes.
 #        data = json.loads(open(Path).read())
 #        return data[Str]
 #rl(Str) = rl(Str)
+
+def SolvePit(c1,c2): # Recebe c1 e c2, retorna hip.
+	hip = sqrt((c1**2)+(c2**2))
+	return hip
+
+def GenTR(Max): # Recebe valor max, retorna laterais correspondentes a um triângulo retângulo.
+	ytr = randint(1,Max) # c1
+	ztr = randint(1,Max) # c2
+	xtr = SolvePit(ytr,ztr) # hip
+	return ytr, ztr, xtr # Retorna tupla
+
