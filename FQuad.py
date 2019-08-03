@@ -3,7 +3,6 @@
 
 import shared
 import prop
-from math import sqrt
 import utils
 
 def QuadFMenu(GameMenu):

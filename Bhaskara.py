@@ -3,7 +3,6 @@
 import utils
 import shared
 import prop
-from math import sqrt
 
 def BskrMenu(GameMenu):
     utils.LogoType()

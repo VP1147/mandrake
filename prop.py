@@ -6,3 +6,5 @@ RandLogo = 0
 GenPtgsModeOpt = ''
 GenBskrModeOpt = ''
 BskrModeOpt = ''
+AGModeOpt = ''
+

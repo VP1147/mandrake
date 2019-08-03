@@ -4,7 +4,7 @@
 import os
 from random import randint
 import shared
-from math import sqrt
+import math
 import prop
 import sys
 
@@ -73,14 +73,14 @@ def SolveDelta(a,b,c): # Recebe a, b e c. Retorna o Delta.
     return ((b**2)-4*a*c)
 
 def SolveBhaskara(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes.
-    x1 = round(float(((b*-1)+sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
-    x2 = round(float(((b*-1)-sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
+    x1 = round(float(((b*-1)+math.sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
+    x2 = round(float(((b*-1)-math.sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
     return x1,x2 # Retorna tupla
 
 def SolveFQuad(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes e as coordenadas
                                  # do vértice.
-    x1 = round((FloatFormat((b*-1)+round(sqrt(SolveDelta(a,b,c)),FloatPrec))/(2*a)),FloatPrec)
-    x2 = round((FloatFormat((b*-1)-round(sqrt(SolveDelta(a,b,c)),FloatPrec))/(2*a)),FloatPrec)
+    x1 = round((FloatFormat((b*-1)+round(math.sqrt(SolveDelta(a,b,c)),FloatPrec))/(2*a)),FloatPrec)
+    x2 = round((FloatFormat((b*-1)-round(math.sqrt(SolveDelta(a,b,c)),FloatPrec))/(2*a)),FloatPrec)
     xv = round(((b*-1)/(2*a)),FloatPrec)
     yv = round(((SolveDelta(a,b,c)*-1)/(4*a)),FloatPrec)
     return x1,x2,xv,yv # Retorna tupla
@@ -113,12 +113,25 @@ def FloatFormat(x): # Corrige imprecisão ao operar valores flutuantes.
 #rl(Str) = rl(Str)
 
 def SolvePit(c1,c2): # Recebe c1 e c2, retorna hip.
-	hip = sqrt((c1**2)+(c2**2))
+	hip = math.sqrt((c1**2)+(c2**2))
 	return hip
 
-def GenTR(Max): # Recebe valor max, retorna laterais correspondentes a um triângulo retângulo.
-	ytr = randint(1,Max) # c1
-	ztr = randint(1,Max) # c2
-	xtr = SolvePit(ytr,ztr) # hip
-	return ytr, ztr, xtr # Retorna tupla
+def GenTR(Max): # Recebe valor max, retorna medidas correspondentes a um triângulo retângulo.
+	anga = randint(0,Max)
+	xtr = randint(0,Max)
+	ytr = (math.sin(anga)*xtr)
+	ztr = (math.cos(anga)*xtr)
+	return xtr, ytr, ztr, anga # Retorna tupla
+
+def GenCircle(Min,Max,FloatPrec,ToCalc): # Recebe valor max. Retorna medidas correspondentes a um círculo.
+	Pi = round((4*(4*math.atan(1/5)-math.atan(1/239))),FloatPrec) # Pi calculado pela fórmula de Machin.
+	if ToCalc == 'R': # Gera circunferência pelo raio
+		Radius = randint(Min,Max)
+		Area = round(FloatFormat(Pi*(Radius**2)),FloatPrec)
+		Circumference = round(FloatFormat(2*Pi*Radius),FloatPrec)
+	elif ToCalc == 'C': # Gera raio pela circumferência
+		Circumference = randint(Min,Max)
+		Radius = round(FloatFormat(Circumference/(2*Pi)),FloatPrec)
+		Area = round(FloatFormat(Pi*(Radius**2)),FloatPrec)
+	return Radius, Circumference, Pi, Area # Retorna tupla
 
