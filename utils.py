@@ -137,7 +137,7 @@ def GenQuad(Min,Max,FloatPrec): # Recebe min/max. Retorna medidas correspondente
 def GenTriangle(Min,Max,FloatPrec): # Ainda em teste...
 	Base = randint(Min,Max)
 	Height = randint(Min,Max)
-	Area = (Base*Height)/2
+	Area = round(FloatFormat(((Base*Height)/2)),FloatPrec)
 	return Base, Height, Area # Retorna tupla
 	
 
