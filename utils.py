@@ -123,15 +123,21 @@ def GenTR(Max): # Recebe valor max, retorna medidas correspondentes a um triâng
 	ztr = (math.cos(anga)*xtr)
 	return xtr, ytr, ztr, anga # Retorna tupla
 
-def GenCircle(Min,Max,FloatPrec,ToCalc): # Recebe valor max. Retorna medidas correspondentes a um círculo.
+def GenCircle(Min,Max,FloatPrec): # Recebe min/max. Retorna medidas correspondentes a um círculo.
 	Pi = round((4*(4*math.atan(1/5)-math.atan(1/239))),FloatPrec) # Pi calculado pela fórmula de Machin.
-	if ToCalc == 'R': # Gera circunferência pelo raio
-		Radius = randint(Min,Max)
-		Area = round(FloatFormat(Pi*(Radius**2)),FloatPrec)
-		Circumference = round(FloatFormat(2*Pi*Radius),FloatPrec)
-	elif ToCalc == 'C': # Gera raio pela circumferência
-		Circumference = randint(Min,Max)
-		Radius = round(FloatFormat(Circumference/(2*Pi)),FloatPrec)
-		Area = round(FloatFormat(Pi*(Radius**2)),FloatPrec)
-	return Radius, Circumference, Pi, Area # Retorna tupla
+	Radius = randint(Min,Max)
+	Area = round(FloatFormat(Pi*(Radius**2)),FloatPrec)
+	return Radius, Pi, Area # Retorna tupla
+
+def GenQuad(Min,Max,FloatPrec): # Recebe min/max. Retorna medidas correspondentes a um quadrado.
+	Side = randint(Min,Max)
+	Area = round(Side**2)
+	return Side, Area # Retorna tupla
+
+def GenTriangle(Min,Max,FloatPrec): # Ainda em teste...
+	Base = randint(Min,Max)
+	Height = randint(Min,Max)
+	Area = (Base*Height)/2
+	return Base, Height, Area # Retorna tupla
+	
 
