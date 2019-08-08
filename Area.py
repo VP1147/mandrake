@@ -4,7 +4,6 @@
 import utils
 import shared
 import prop
-import Circle
 
 def AreaMenu(GameMenu):
 	utils.LogoType()
@@ -17,7 +16,20 @@ def AreaMenu(GameMenu):
 	if prop.AreaModeOpt == 'x':
 		return GameMenu()
 	elif prop.AreaModeOpt == '1':
-		Circle.CircleMenu(GameMenu,AreaMenu)
+		CircleArea(GameMenu,AreaMenu)
 	else: return AreaMenu(GameMenu)
 
-	
+def CircleArea(GameMenu,AreaMenu):
+	utils.clear()
+	print("<'exit' para sair>")
+	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
+	while 1:
+		Rad,Pi,Area = utils.GenCircle(shared.IntMin,shared.IntMax,shared.FloatPrec)
+		r = input("Raio = "+str(Rad)+" | Área = ")
+		rs = Area
+		if utils.CheckForFloat(r) == False: # Caso não-float
+			if r == 'exit': return AreaMenu(GameMenu)
+			# Loop continua caso r != exit
+		else: # Caso Float
+			if float(r) == rs: print("Certo")
+			else: print("O certo seria "+str(rs))
