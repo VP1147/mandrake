@@ -1,29 +1,15 @@
 # # -*- encoding: utf-8 -*-
 # library for Mandrake | by vp1147
 
-import os
+# External libs
+import os, math, sys
 from random import randint
+from getch import getch
+from math import sqrt
+
 import shared
-import math
 import prop
-import sys
 
-class _GetchUnix:
-    def __init__(self):
-        import tty
-
-    def __call__(self):
-        import tty, termios
-        fd = sys.stdin.fileno()
-        old_settings = termios.tcgetattr(fd)
-        try:
-            tty.setraw(sys.stdin.fileno())
-            ch = sys.stdin.read(1)
-        finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-        return ch
-
-getch = _GetchUnix()
 
 def exit():
     sys.exit()
@@ -39,7 +25,7 @@ def LogoType(): # game logo
     with open('./design/logotype'+str(prop.RandLogo)+'.txt') as txt:
         print(txt.read())
 
-def CheckForInt(x): # Following the "vp1147's box analogy"
+def CheckForInt(x):
     # <DEPRECATED>
     #pattern = re.compile("^[0-9][0-9]*\.?[0-9]*") # Int number pattern
     #confirm = re.search(pattern,str(z)) # Verify 'z'
@@ -139,5 +125,10 @@ def GenTriangle(Min,Max,FloatPrec): # Ainda em teste...
 	Height = randint(Min,Max)
 	Area = round(FloatFormat(((Base*Height)/2)),FloatPrec)
 	return Base, Height, Area # Retorna tupla
-	
+
+def GenRectangle(Min,Max):# Recebe min/max. Retorna medidas correspondentes a um retângulo
+	Base = randint(Min,Max)
+	Height = randint(Min,Max)
+	Area = Base*Height
+	return Base, Height, Area
 

@@ -26,5 +26,5 @@ setup(
         "Topic :: Education :: Testing"
     ],
     include_package_data=True,
-    install_requires=['termios', 'tty','sys','math','os','random','json'],
+    install_requires=['math','os','random','json','getch'],
 )

@@ -2,15 +2,28 @@
 
 # Teorema de Pitágoras:
     # Modo: 
-        # 1 - Simples: O usuário informa a raiz, sem necessidade de a calcular;
-        # 2 - Padrão: O usuário calcula o resultado com uma certa precisão definível.
+        # 1 - Simples: Informa-se a raiz, sem necessidade de a calcular;
+        # 2 - Padrão: Calcula-se o resultado com uma certa precisão definível.
     # Config: Necessário usar 1 como valor mínimo nos parâmetros do gerador de inteiros
-        aleatórios.
+        'aleatórios'.
 
 # Equação quadrática:
     # Modo:
-        # 1 - Simples: O usuário informa o delta;
-        # 2 - Padrão: O usuário informa o delta e as raízes (x1 e x2) com precisão definível.
+        # 1 - Simples: Calcular o delta;
+        # 2 - Padrão: Calcular o delta e as raízes (x1 e x2) com precisão definível.
+    # Config: Necessário usar 1 como valor mínimo nos parâmetros do gerador de inteiros
+        'aleatórios'.
         
-# Função Quadrática: O usuário informa o delta, as raízes (x1 e x2), as coordenadas do vértice
-    (Xv e Yv) e interseção com o eixo y da parábola com precisão definível.
+# Função Quadrática: Se Calcula o delta, as raízes (x1 e x2), as coordenadas do vértice
+    (Xv e Yv) e interseção com o eixo y com precisão definível.
+    # Config: Necessário usar 1 como valor mínimo nos parâmetros do gerador de inteiros
+        'aleatórios'.
+
+# Área:
+	Se calcula a área da figura geometrica escolhida, sendo:
+		# Circulo: Pi*r^2
+		# Quadrado: l^2
+		# Retângulo: b*h
+		# Triângulo: (b*h)/2
+	# Config: Necessário usar 1 como valor mínimo nos parâmetros do gerador de inteiros
+        'aleatórios'.

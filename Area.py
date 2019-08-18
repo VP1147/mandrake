@@ -5,7 +5,7 @@ import utils
 import shared
 import prop
 
-def AreaMenu(GameMenu):
+def AreaMenu():
 	utils.LogoType()
 	print("<---Modo--->")
 	print("1 - Círculo")
@@ -14,49 +14,41 @@ def AreaMenu(GameMenu):
 	print("x - Voltar")
 	prop.AreaModeOpt = utils.getch()
 	if prop.AreaModeOpt == 'x':
-		return GameMenu()
+		return 0
 	elif prop.AreaModeOpt == '1':
-		CircleArea(GameMenu,AreaMenu)
+		utils.clear()
+		print("<'exit' para sair>")
+		print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
+		while 1:
+			Rad,Pi,Area = utils.GenCircle(shared.IntMin,shared.IntMax,shared.FloatPrec)
+			r = input("Raio = "+str(Rad)+" | Área = ")
+			if r == 'exit': return 0
+			rs = Area
+			CheckAnswer(rs,r)
 	elif prop.AreaModeOpt == '2':
-		QuadArea(GameMenu,AreaMenu)
+		utils.clear()
+		print("<'exit' para sair>")
+		print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
+		while 1:
+			Side,Area = utils.GenQuad(shared.IntMin,shared.IntMax,shared.FloatPrec)
+			r = input("Lado = "+str(Side)+" | Área = ")
+			if r == 'exit': return 0
+			rs = Area
+			CheckAnswer(rs,r)
 	elif prop.AreaModeOpt == '3':
-		TriangleArea(GameMenu,AreaMenu)
-	else: return AreaMenu(GameMenu)
+		utils.clear()
+		print("<'exit' para sair>")
+		print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
+		while 1:
+			Base,Height,Area = utils.GenTriangle(shared.IntMin,shared.IntMax,shared.FloatPrec)
+			r = input("Base = "+str(Base)+" | Altura = "+str(Height)+" | Área = ")
+			if r == 'exit': return 0
+			rs = Area
+			CheckAnswer(rs,r)
 
-def CircleArea(GameMenu,AreaMenu):
-	utils.clear()
-	print("<'exit' para sair>")
-	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
-	while 1:
-		Rad,Pi,Area = utils.GenCircle(shared.IntMin,shared.IntMax,shared.FloatPrec)
-		r = input("Raio = "+str(Rad)+" | Área = ")
-		rs = Area
-		CheckAnswer(rs,r,GameMenu)
-
-def QuadArea(GameMenu,AreaMenu):
-	utils.clear()
-	print("<'exit' para sair>")
-	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
-	while 1:
-		Side,Area = utils.GenQuad(shared.IntMin,shared.IntMax,shared.FloatPrec)
-		r = input("Lado = "+str(Side)+" | Área = ")
-		rs = Area
-		CheckAnswer(rs,r,GameMenu)
-
-def TriangleArea(GameMenu,AreaMenu):
-	utils.clear()
-	print("<'exit' para sair>")
-	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
-	while 1:
-		Base,Height,Area = utils.GenTriangle(shared.IntMin,shared.IntMax,shared.FloatPrec)
-		r = input("Base = "+str(Base)+" | Altura = "+str(Height)+" | Área = ")
-		rs = Area
-		CheckAnswer(rs,r,GameMenu)
-			
-def CheckAnswer(rs,r,GameMenu):
+def CheckAnswer(rs,r):
 	if utils.CheckForFloat(r) == False: # Caso não-float
-		if r == 'exit': return AreaMenu(GameMenu)
-			# Loop continua caso r != exit
+		return 0
 	else: # Caso Float
 		if float(r) == rs: print("Certo")
 		else: print("O certo seria "+str(rs))
