@@ -1,11 +1,12 @@
 # Mandrake
 Jogo simples sobre matemática.
 Inclui:
-	- Aritmética;
-	- Equação quadrática (Bhaskara);
-	- Função quadrática;
-	- Teorema de Pitágoras;
-	- Área de figuras geométricas;
+- Aritmética;
+- Equação quadrática (Bhaskara);
+- Função quadrática;
+- Teorema de Pitágoras;
+- Área de figuras geométricas;
+
 ## Linux
 ```
 $ git clone https://github.com/vp1147/mandrake
