@@ -1,9 +1,7 @@
 # -*- encoding: utf-8 -*-
 # library for Mandrake | by vp1147
 
-import shared
-import prop
-import utils
+import shared, prop, utils
 
 def QuadFMenu():
 	utils.clear()

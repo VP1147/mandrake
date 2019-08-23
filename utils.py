@@ -4,26 +4,31 @@
 # External libs
 import os, math, sys
 from random import randint
-from getch import getch
 from math import sqrt
 
-import shared
-import prop
+import shared, prop
 
+if os.name == 'nt': # Caso executado sob arq, NT
+	import msvcrt
+	getch = msvcrt.getwch
+	def clear(): os.system('cls')
+elif os.name == 'posix': # Caso executado sob arq. Posix
+	from getch import getch
+	def clear(): os.system('clear')
 
 def exit():
     sys.exit()
 
-def LogoGen():
-    prop.RandLogo = randint(0,7) # Random logo generator
+def ReadTxt(File):
+	with open(File, encoding='utf-8') as txt:
+		print(txt.read())
 
-def clear(): # clear screen function
-    os.system('cls||clear') # For Windows-Linux compatibility
+def LogoGen():
+	prop.RandLogo = randint(0,7) # Random logo generator
 
 def LogoType(): # game logo
     clear()
-    with open('./design/logotype'+str(prop.RandLogo)+'.txt') as txt:
-        print(txt.read())
+    ReadTxt('./design/logotype'+str(prop.RandLogo)+'.txt')
 
 def CheckForInt(x):
     # <DEPRECATED>
@@ -82,10 +87,6 @@ def CheckForOneStringList(List,String): # Verifica se há string específica em 
         if List[i] == String:
             return True
 
-def ReadTxt(File):
-    with open(File) as txt:
-        print(txt.read())
-
 def FloatFormat(x): # Corrige imprecisão ao operar valores flutuantes.
     return float(format((x),'8f'))
 
@@ -102,12 +103,12 @@ def SolvePit(c1,c2): # Recebe c1 e c2, retorna hip.
 	hip = math.sqrt((c1**2)+(c2**2))
 	return hip
 
-def GenTR(Max): # Recebe valor max, retorna medidas correspondentes a um triângulo retângulo.
-	anga = randint(0,Max)
-	xtr = randint(0,Max)
-	ytr = (math.sin(anga)*xtr)
-	ztr = (math.cos(anga)*xtr)
-	return xtr, ytr, ztr, anga # Retorna tupla
+#def GenTR(Max): # Recebe valor max, retorna medidas correspondentes a um triângulo retângulo.
+#	anga = randint(0,Max)
+#	xtr = randint(0,Max)
+#	ytr = (math.sin(anga)*xtr)
+#	ztr = (math.cos(anga)*xtr)
+#	return xtr, ytr, ztr, anga # Retorna tupla
 
 def GenCircle(Min,Max,FloatPrec): # Recebe min/max. Retorna medidas correspondentes a um círculo.
 	Pi = round((4*(4*math.atan(1/5)-math.atan(1/239))),FloatPrec) # Pi calculado pela fórmula de Machin.
@@ -120,7 +121,8 @@ def GenQuad(Min,Max,FloatPrec): # Recebe min/max. Retorna medidas correspondente
 	Area = round(Side**2)
 	return Side, Area # Retorna tupla
 
-def GenTriangle(Min,Max,FloatPrec): # Ainda em teste...
+def GenTriangle(Min,Max,FloatPrec): # Recebe min/max. Retorna valores correspodentes a um
+                                    # triângulo
 	Base = randint(Min,Max)
 	Height = randint(Min,Max)
 	Area = round(FloatFormat(((Base*Height)/2)),FloatPrec)
@@ -131,4 +133,8 @@ def GenRectangle(Min,Max):# Recebe min/max. Retorna medidas correspondentes a um
 	Height = randint(Min,Max)
 	Area = Base*Height
 	return Base, Height, Area
+
+def CheckForN(x): # Leitura:
+	if int(x) == x: return True # É natural
+	else: return False # Ñ é natural
 

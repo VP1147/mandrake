@@ -1,8 +1,7 @@
 # # -*- encoding: utf-8 -*-
 # Library for Mandrake | By vp1147
-import shared
-import utils
-import prop
+
+import shared, utils, prop
 
 def BskrGen():
 	utils.LogoType()

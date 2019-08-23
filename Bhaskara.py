@@ -1,8 +1,7 @@
 # # -*- encoding: utf-8 -*-
 # Library for Mandrake | By vp1147
-import utils
-import shared
-import prop
+
+import utils, shared, prop
 
 def BskrMenu():
 	utils.LogoType()

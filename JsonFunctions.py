@@ -1,8 +1,10 @@
 # # -*- encoding: utf-8 -*-
 # JSON functions lib for Mandrake
-import utils
+
+# External libs
 import json
-import shared
+
+import utils, shared
 
 #def SetMaxMin(MaxMinDict,SettingsMenu):
 #    with open('settings.json','w') as ToDump:

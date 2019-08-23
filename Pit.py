@@ -1,9 +1,7 @@
 # # -*- encoding: utf-8 -*-
 # Library for Mandrake | By vp1147
-import utils
-import shared
-import prop
-from math import sqrt
+
+import utils, shared, prop
 
 def PtgsMenu():
 	utils.LogoType()
@@ -35,13 +33,13 @@ def PtgsMenu():
 		elif prop.PtgsModeOpt == '2':
 			if x >= y and x >= z: # Caso x maior
 				r = input("c1 = "+str(y)+", c2 = "+str(z)+", hip = ")
-				rs = round(sqrt((y**2)+(z**2)),shared.FloatPrec)
+				rs = round(utils.sqrt((y**2)+(z**2)),shared.FloatPrec)
 			elif y >= x and y >= z: # Caso y maior
 				r = input("c1 = "+str(x)+", c2 = "+str(z)+", hip = ")
-				rs = round(sqrt((x**2)+(z**2)),shared.FloatPrec)
+				rs = round(utils.sqrt((x**2)+(z**2)),shared.FloatPrec)
 			elif z >= x and z >= y: # Caso z maior
 				r = input("c1 = "+str(x)+", c2 = "+str(y)+", hip = ")
-				rs = round(sqrt((x**2)+(y**2)),shared.FloatPrec)
+				rs = round(utils.sqrt((x**2)+(y**2)),shared.FloatPrec)
 		if utils.CheckForFloat(r) == False:
 			if r == 'exit': return 0
 			else: pass
