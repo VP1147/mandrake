@@ -4,8 +4,10 @@
 # External libs
 from random import randint
 import os
+import sys
 
 # Own libs
+sys.path.append('./modules')
 import utils, Pit, Gen, shared, JsonFunctions, Bhaskara, FQuad, Area, Arit
 
 def GameMenu():
@@ -64,11 +66,11 @@ while 1:
     elif InitMenuOpt == '3': SettingsMenu()
     elif InitMenuOpt == '4': # call man page
         utils.LogoType()
-        utils.ReadTxt('man.txt')
+        utils.ReadTxt('./data/man.txt')
         utils.getch()
     elif InitMenuOpt == '5':
         utils.LogoType()
-        utils.ReadTxt('info.txt')
+        utils.ReadTxt('./data/info.txt')
         utils.getch()
     elif InitMenuOpt == '6':
         utils.LogoType()

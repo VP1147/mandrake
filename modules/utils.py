@@ -28,7 +28,8 @@ def LogoGen():
 
 def LogoType(): # game logo
     clear()
-    ReadTxt('./design/logotype'+str(prop.RandLogo)+'.txt')
+    Path = './data/logotypes/'
+    ReadTxt((Path+'logotype'+str(prop.RandLogo)+'.txt'))
 
 def CheckForInt(x):
     # <DEPRECATED>

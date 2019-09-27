@@ -18,10 +18,11 @@ import utils, shared
 #    shared.IntMax = int(MaxMin.get("max"))
 
 def SaveAllFromCfg(SettingsMenu):
-    DictAll = {"IntMin": shared.IntMin, "IntMax": shared.IntMax, "FloatPrec": shared.FloatPrec}
-    with open('settings.json','w') as ToSave:
-        json.dump(DictAll, ToSave, indent=4)
-    return SettingsMenu()
+	Path = './data/settings.json'
+	DictAll = {"IntMin": shared.IntMin, "IntMax": shared.IntMax, "FloatPrec": shared.FloatPrec}
+	with open(Path,'w') as ToSave:
+		json.dump(DictAll, ToSave, indent=4)
+	return SettingsMenu()
 
 def ReadJson(Str,Path): # Recebe local do .json e nome; retorna valor corresp. 
     data = json.loads(open(Path).read())
