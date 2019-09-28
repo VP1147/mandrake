@@ -4,7 +4,7 @@
 import shared, utils, prop
 
 def BskrGen():
-	utils.LogoType()
+	utils.LogoType(shared.LogoPath)
 	print("<---Gerar equação quadrática--->")
 	print("Valor mínimo das variáveis: ",shared.IntMin)
 	print("Valor máximo das variáveis: ",shared.IntMax)
@@ -29,7 +29,7 @@ def BskrGen():
 	return 0
 
 def PtgsGen():
-    utils.LogoType()
+    utils.LogoType(shared.LogoPath)
     print("<---Gerar Teorema de Pítágoras--->")
     print("Valor mínimo das variáveis: ",shared.IntMin)
     print("Valor máximo das variáveis: ",shared.IntMax)
@@ -63,7 +63,7 @@ def PtgsGen():
     utils.getch()
 
 def FQuadGen():
-    utils.LogoType()
+    utils.LogoType(shared.LogoPath)
     print("<---Gerar função quadrática--->")
     print("Valor mínimo das variáveis: ",shared.IntMin)
     print("Valor máximo das variáveis: ",shared.IntMax)
@@ -82,7 +82,7 @@ def FQuadGen():
 
 def GenMenu():
 	while 1:
-		utils.LogoType()
+		utils.LogoType(shared.LogoPath)
 		print("1 - Teorema de Pitágoras")
 		print("2 - Equação quadrática")
 		print("3 - Função quadrática")

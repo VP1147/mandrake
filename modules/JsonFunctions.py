@@ -19,10 +19,10 @@ import utils, shared
 
 def SaveAllFromCfg(SettingsMenu):
 	Path = './data/settings.json'
-	DictAll = {"IntMin": shared.IntMin, "IntMax": shared.IntMax, "FloatPrec": shared.FloatPrec}
+	DictAll = {"IntMin": shared.IntMin, "IntMax": shared.IntMax, "FloatPrec": shared.FloatPrec, "RCount": shared.RCount}
 	with open(Path,'w') as ToSave:
 		json.dump(DictAll, ToSave, indent=4)
-	return SettingsMenu()
+	return 0
 
 def ReadJson(Str,Path): # Recebe local do .json e nome; retorna valor corresp. 
     data = json.loads(open(Path).read())

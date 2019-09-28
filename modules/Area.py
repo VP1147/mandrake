@@ -6,7 +6,7 @@ import shared
 import prop
 
 def AreaMenu():
-	utils.LogoType()
+	utils.LogoType(shared.LogoPath)
 	print("<---Modo--->")
 	print("1 - Círculo")
 	print("2 - Quadrado")

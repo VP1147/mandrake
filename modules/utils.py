@@ -26,9 +26,8 @@ def ReadTxt(File):
 def LogoGen():
 	prop.RandLogo = randint(0,7) # Random logo generator
 
-def LogoType(): # game logo
+def LogoType(Path): # game logo
     clear()
-    Path = './data/logotypes/'
     ReadTxt((Path+'logotype'+str(prop.RandLogo)+'.txt'))
 
 def CheckForInt(x):

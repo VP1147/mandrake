@@ -4,7 +4,7 @@
 import utils, shared, prop
 
 def PtgsMenu():
-	utils.LogoType()
+	utils.LogoType(shared.LogoPath)
 	print("<---Modo--->")
 	print("1 - Simples")
 	print("2 - Padrão")
@@ -13,7 +13,7 @@ def PtgsMenu():
 	if prop.PtgsModeOpt == 'x':
 		return GameMenu()
 	utils.clear()
-	utils.ReadTxt(('./design/ModeLogo/logotype'+str(prop.PtgsModeOpt)+'.txt')) # Mode logo
+	utils.ReadTxt((shared.GameLogoPath+'logotype'+str(prop.PtgsModeOpt)+'.txt')) # Mode logo
 	print("<'exit' para sair>")
 	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
 	while 1:
