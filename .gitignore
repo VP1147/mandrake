@@ -1,5 +1,3 @@
-
-*.json
 pitagoras.py
 gen.py
 __pycache__/
