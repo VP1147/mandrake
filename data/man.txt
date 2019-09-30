@@ -27,3 +27,7 @@
 		# Triângulo: (b*h)/2
 	# Config: Necessário usar 1 como valor mínimo nos parâmetros do gerador de inteiros
         'aleatórios'.
+
+# TODAS:
+	# Contagem de resoluções: Limita o número de questões a serem geradas para o usuário
+		resolver. Após o limite ser atingido, é apresentado um resumo dos retornos.

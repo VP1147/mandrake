@@ -37,7 +37,7 @@ def Bhaskara():
 	RList = []
 	if prop.BskrModeOpt == '1':
 		drs = utils.SolveDelta(a,b,c) # Calcula delta
-		dr = input(str(a)+"*x\N{SUPERSCRIPT TWO} + "+str(b)+"*x + ("+str(c)+"). Delta = ")
+		dr = input(str(a)+"*x\N{SUPERSCRIPT TWO} + "+str(b)+"x + ("+str(c)+"). Delta = ")
 		if dr == 'exit': return 0
 		else: 
 			RList.append(BskrVerify(dr,drs))

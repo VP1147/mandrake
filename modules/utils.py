@@ -24,7 +24,7 @@ def ReadTxt(File):
 		print(txt.read())
 
 def LogoGen():
-	prop.RandLogo = randint(0,7) # Random logo generator
+	prop.RandLogo = randint(0,13) # Random logo generator
 
 def LogoType(Path): # game logo
     clear()
