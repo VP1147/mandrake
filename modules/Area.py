@@ -18,18 +18,20 @@ def AreaMenu():
 	utils.clear()
 	print("<'exit' para sair>")
 	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
-	if shared.RCount == 0:
-		Signal = Area()
-		if Signal == 'exit': return 0
-	else:
-		List = []
-		for Count in range(shared.RCount):
-			List.insert(Count,Area(prop.AreaModeOpt))
-		print("-- Concluido --")
-		for i in range(shared.RCount):
-			print(str((i+1))+" - "+List[i])
-		utils.getch()
-		return 0
+	while 1:
+		if shared.RCount == 0:
+			Signal = Area(prop.AreaModeOpt)
+			if Signal == 'exit': return 0
+			else: pass
+		else:
+			List = []
+			for Count in range(shared.RCount):
+				List.insert(Count,Area(prop.AreaModeOpt))
+			print("-- Concluido --")
+			for i in range(shared.RCount):
+				print(str((i+1))+" - "+List[i])
+			utils.getch()
+			return 0
 
 def Area(Opt):
 	if Opt == '1':
