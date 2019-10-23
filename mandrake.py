@@ -8,7 +8,7 @@ import sys
 
 # Own libs
 sys.path.append('./modules')
-import utils, Pit, Gen, shared, JsonFunctions, Bhaskara, FQuad, Area, Arit
+import utils, Pit, Gen, shared, JsonFunctions, Bhaskara, FQuad, Area, Arit, Prime
 
 def GameMenu():
 	while 1:
@@ -18,6 +18,7 @@ def GameMenu():
 		print("3 - Teorema de Pitágoras")
 		print("4 - Função Quadrática")
 		print("5 - Área")
+		print("6 - Números primos")
 		print("x - Voltar")
 		GameMenuOpt = utils.getch()
 		if GameMenuOpt == '1': Arit.AritMenu()
@@ -25,6 +26,7 @@ def GameMenu():
 		elif GameMenuOpt == '3': Pit.PtgsMenu()
 		elif GameMenuOpt == '4': FQuad.QuadFMenu()
 		elif GameMenuOpt == '5': Area.AreaMenu()
+		elif GameMenuOpt == '6': Prime.PrimeMenu()
 		elif GameMenuOpt == 'x': return 0 # Finaliza a função
     	# Código reinicia
 

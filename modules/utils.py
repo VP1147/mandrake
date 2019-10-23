@@ -138,3 +138,9 @@ def CheckForN(x): # Leitura:
 	if int(x) == x: return True # É natural
 	else: return False # Ñ é natural
 
+def CheckForPrime(x): # Leitura:
+	for i in range(1,x):
+		if i != 1:
+			if int(x/i) == (x/i):
+				return False # Ñ é primo
+	return True # É primo

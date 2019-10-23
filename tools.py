@@ -13,4 +13,4 @@ from Bhaskara import *
 from FQuad import *
 from Area import * 
 from Arit import *
-
+from Prime import *
