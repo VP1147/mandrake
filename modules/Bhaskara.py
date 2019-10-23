@@ -37,16 +37,13 @@ def Bhaskara():
 	RList = []
 	if prop.BskrModeOpt == '1':
 		drs = utils.SolveDelta(a,b,c) # Calcula delta
-		dr = input(str(a)+"*x\N{SUPERSCRIPT TWO} + "+str(b)+"x + ("+str(c)+"). Delta = ")
-		if dr == 'exit': return 0
-		else: 
-			RList.append(BskrVerify(dr,drs))
-			print(' '.join(RList))
-			return RList
+		dr = input(str(a)+"x\N{SUPERSCRIPT TWO} + "+str(b)+"x + ("+str(c)+"). Delta = ")
+		if dr == 'exit': return 'exit'
+		else: RList.append(BskrVerify(dr,drs))
 	elif prop.BskrModeOpt == '2':
 		x1rs,x2rs = utils.SolveBhaskara(a,b,c,shared.FloatPrec) # Calcula x1 e x2
 		drs = utils.SolveDelta(a,b,c) # Calcula delta
-		print(str(a)+"*x^2 + "+str(b)+"*x + ("+str(c)+")")
+		print(str(a)+"x\N{SUPERSCRIPT TWO} + "+str(b)+"x + ("+str(c)+")")
 		dr = input("Delta = ")
 		if dr == 'exit': return 'exit'
 		else: RList.append(BskrVerify(dr,drs))
@@ -56,7 +53,7 @@ def Bhaskara():
 		x2r = input("x2 = ")
 		if x2r == 'exit': return 'exit'
 		else: RList.append(BskrVerify(x2r,(x1rs,x2rs)))
-		return RList
+	return RList
 
 def BskrVerify(x,r):
 	if utils.CheckForFloat(x) == False:
