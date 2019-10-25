@@ -144,3 +144,10 @@ def CheckForPrime(x): # Leitura:
 			if int(x/i) == (x/i):
 				return False # Ñ é primo
 	return True # É primo
+
+def DivCheck(x):
+	List = []
+	for i in range(1,x):
+		if int(x/i) == (x/i):
+			List.append(i)
+	return List

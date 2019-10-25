@@ -8,7 +8,7 @@ import sys
 
 # Own libs
 sys.path.append('./modules')
-import utils, Pit, Gen, shared, JsonFunctions, Bhaskara, FQuad, Area, Arit, Prime
+import utils, Pit, Gen, shared, JsonFunctions, Bhaskara, FQuad, Area, Arit, Prime, UtilTools
 
 def GameMenu():
 	while 1:
@@ -58,24 +58,26 @@ while 1:
 	utils.LogoType(shared.LogoPath)
 	print("1 - Jogar")
 	print("2 - Gerador")
-	print("3 - Config")
-	print("4 - Manual")
-	print("5 - Sobre")
-	print("6 - Licença")
+	print("3 - Ferramentas")
+	print("4 - Config")
+	print("5 - Manual")
+	print("6 - Sobre")
+	print("7 - Licença")
 	print("x - Sair")
 	InitMenuOpt = utils.getch()
 	if InitMenuOpt == '1': GameMenu()
 	elif InitMenuOpt == '2': Gen.GenMenu()
-	elif InitMenuOpt == '3': SettingsMenu()
-	elif InitMenuOpt == '4': # call man page
+	elif InitMenuOpt == '3' : UtilTools.UtilToolsMenu()
+	elif InitMenuOpt == '4': SettingsMenu()
+	elif InitMenuOpt == '5': # call man page
 		utils.LogoType(shared.LogoPath)
 		utils.ReadTxt('./data/man.txt')
 		utils.getch()
-	elif InitMenuOpt == '5':
+	elif InitMenuOpt == '6':
 		utils.LogoType(shared.LogoPath)
 		utils.ReadTxt('./data/info.txt')
 		utils.getch()
-	elif InitMenuOpt == '6':
+	elif InitMenuOpt == '7':
 		utils.LogoType(shared.LogoPath)
 		utils.ReadTxt('LICENSE')
 		utils.getch()
