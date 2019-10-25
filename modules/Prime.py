@@ -33,6 +33,5 @@ def PrimeVerify(r,x):
 	elif r == 's' and utils.CheckForPrime(x) == False or r == 'n' and utils.CheckForPrime(x) == True:
 		print("Errado")
 		return 'Errado'
-	else:
-		print(r+", "+str(utils.CheckForPrime(x)))
-		return 'Nula'
+	elif shared.RCount == 0 and r == 'exit': return 'exit'
+	else: return 'Nula'
