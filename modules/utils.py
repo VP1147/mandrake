@@ -141,7 +141,7 @@ def CheckForN(x): # Leitura:
 def CheckForPrime(x): # Leitura:
 	for i in range(1,x):
 		if i != 1:
-			if int(x/i) == (x/i):
+			if int(x/i) == (x/i) and x > 1:
 				return False # Ñ é primo
 	return True # É primo
 
