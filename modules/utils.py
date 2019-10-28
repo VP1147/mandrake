@@ -103,13 +103,6 @@ def SolvePit(c1,c2): # Recebe c1 e c2, retorna hip.
 	hip = math.sqrt((c1**2)+(c2**2))
 	return hip
 
-#def GenTR(Max): # Recebe valor max, retorna medidas correspondentes a um triângulo retângulo.
-#	anga = randint(0,Max)
-#	xtr = randint(0,Max)
-#	ytr = (math.sin(anga)*xtr)
-#	ztr = (math.cos(anga)*xtr)
-#	return xtr, ytr, ztr, anga # Retorna tupla
-
 def GenCircle(Min,Max,FloatPrec): # Recebe min/max. Retorna medidas correspondentes a um círculo.
 	Pi = round((4*(4*math.atan(1/5)-math.atan(1/239))),FloatPrec) # Pi calculado pela fórmula de Machin.
 	Radius = randint(Min,Max)
@@ -151,3 +144,18 @@ def DivCheck(x):
 		if int(x/i) == (x/i):
 			List.append(i)
 	return List
+
+def Chudnovsky(disp, prec,maxK=70): 
+	from decimal import Decimal as Dec, getcontext as gc
+	gc().prec = prec
+	K, M, L, X, S = 6, 1, 13591409, 1, 13591409
+	for k in range(1, maxK+1):
+		M = (K**3 - 16*K) * M // k**3 
+		L += 545140134
+		X *= -262537412640768000
+		S += Dec(M * L) / X
+		K += 12
+		pi = 426880 * Dec(10005).sqrt() / S
+	pi = Dec(str(pi)[:disp]) # drop few digits of precision for accuracy
+	return pi
+
