@@ -159,3 +159,6 @@ def Chudnovsky(disp, prec,maxK=70):
 	pi = Dec(str(pi)[:disp]) # drop few digits of precision for accuracy
 	return pi
 
+def AritMean(x): # X: tupla. Retorna média dos valores na tupla 'x'
+	return sum(float(i) for i in x)/len(x)
+	

@@ -7,11 +7,13 @@ def UtilToolsMenu():
 	utils.LogoType(shared.LogoPath)
 	print("1 - Verificador de divisibilidade")
 	print("2 - Cálculo de π")
+	print("3 - Média aritmética")
 	print("x - Voltar")
 	UtilsToolOpt = utils.getch()
 	if UtilsToolOpt == 'x': return 0
 	elif UtilsToolOpt == '1': DivTool()
 	elif UtilsToolOpt == '2': PiTool()
+	elif UtilsToolOpt == '3': AritMeanTool()
 
 def DivTool():
 	utils.LogoType(shared.LogoPath)
@@ -29,5 +31,13 @@ def PiTool():
 	if prec > 9999:
 		print("<Aviso: Número grande, operação pode demorar>")
 	print("π ~= "+str(utils.Chudnovsky(prec, prec)))
+	utils.getch()
+	return 0
+
+def AritMeanTool():
+	utils.LogoType(shared.LogoPath)
+	print("<Valores separados por vírgula>")
+	num = input("Valores: ")
+	print(utils.AritMean(num.split(',')))
 	utils.getch()
 	return 0
