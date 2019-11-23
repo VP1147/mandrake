@@ -161,4 +161,10 @@ def Chudnovsky(disp, prec,maxK=70):
 
 def AritMean(x): # X: tupla. Retorna média dos valores na tupla 'x'
 	return sum(float(i) for i in x)/len(x)
-	
+
+def CalcFunction(f,x):	# Recebe uma função 'f' e uma tupla 'x'.
+	List = []	# Retorna uma lista com os valores com f(x)
+			# variando entre x[0] e x[1].
+	for i in range(x[0],x[1]):
+		List.append(f(i))
+	return List
