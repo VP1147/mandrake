@@ -161,4 +161,13 @@ def Chudnovsky(disp, prec,maxK=70):
 
 def AritMean(x): # X: tupla. Retorna média dos valores na tupla 'x'
 	return sum(float(i) for i in x)/len(x)
-	
+
+def MultiplyList(x): # Multiply elements one by one. Traversal method.
+	aux = 1
+	for i in x:
+		aux = aux * i
+	return aux
+ 
+def GeometricMean(x): # Retorna a média geométrica da lista 'x'
+	return math.sqrt(MultiplyList(x))
+
