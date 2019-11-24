@@ -171,3 +171,9 @@ def MultiplyList(x): # Multiply elements one by one. Traversal method.
 def GeometricMean(x): # Retorna a média geométrica da lista 'x'
 	return math.sqrt(MultiplyList(x))
 
+def CalcFunction(f,x):	# Recebe uma função 'f' e uma tupla 'x'.
+	List = []	# Retorna uma lista com os valores com f(x)
+			# variando entre x[0] e x[1].
+	for i in range(x[0],x[1]):
+		List.append(f(i))
+	return List
