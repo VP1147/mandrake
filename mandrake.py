@@ -8,26 +8,24 @@ import sys
 
 # Own libs
 sys.path.append('./modules')
-import utils, Pit, Gen, shared, JsonFunctions, Bhaskara, FQuad, Area, Arit, Prime, UtilTools
+import utils, Gen, shared, JsonFunctions, Area, Arit, Prime, UtilTools, Functions, Equations
 
 def GameMenu():
 	while 1:
 		utils.LogoType(shared.LogoPath)
 		print("1 - Aritmética")
-		print("2 - Equação quadrática")
-		print("3 - Teorema de Pitágoras")
-		print("4 - Função Quadrática")
-		print("5 - Área")
-		print("6 - Números primos")
+		print("2 - Equações")
+		print("3 - Funções")
+		print("4 - Geometria")
+		print("5 - Números primos")
 		print("x - Voltar")
-		GameMenuOpt = utils.getch()
-		if GameMenuOpt == '1': Arit.AritMenu()
-		elif GameMenuOpt == '2': Bhaskara.BskrMenu()
-		elif GameMenuOpt == '3': Pit.PtgsMenu()
-		elif GameMenuOpt == '4': FQuad.QuadFMenu()
-		elif GameMenuOpt == '5': Area.AreaMenu()
-		elif GameMenuOpt == '6': Prime.PrimeMenu()
-		elif GameMenuOpt == 'x': return 0 # Finaliza a função
+		Opt = utils.getch()
+		if Opt == '1': Arit.AritMenu()
+		elif Opt == '2': EqMenu()
+		elif Opt == '3': FunctionsMenu()
+		elif Opt == '4': Area.AreaMenu()
+		elif Opt == '5': Prime.PrimeMenu()
+		elif Opt == 'x': return 0 # Finaliza a função
     	# Código reinicia
 
 def SettingsMenu():
@@ -37,22 +35,46 @@ def SettingsMenu():
 		print("2 - Precisão de decimais (Definido: "+str(shared.FloatPrec)+")")
 		print("3 - Contagem de resoluções (Definido: "+str(shared.RCount)+")")
 		print("x - Voltar")
-		SettingsMenuOpt = utils.getch()
-		if SettingsMenuOpt == '1':
+		Opt = utils.getch()
+		if Opt == '1':
 			utils.LogoType(shared.LogoPath)
 			shared.IntMin = int(input("Definir tamanho mínimo: "))
 			shared.IntMax = int(input("Definir tamanho máximo: "))
-		elif SettingsMenuOpt == '2':
+		elif Opt == '2':
 			utils.LogoType(shared.LogoPath)
 			shared.FloatPrec = int(input("Casas decimais de precisão (Default:1): "))
 			JsonFunctions.SaveAllFromCfg(SettingsMenu)
 			return 0
-		elif SettingsMenuOpt == '3':
+		elif Opt == '3':
 			utils.LogoType(shared.LogoPath)
 			shared.RCount = int(input("Limite de resoluções (0 - Desabilitar limite): "))
-		elif SettingsMenuOpt == 'x':
+		elif Opt == 'x':
 			return 0
 
+def FunctionsMenu():
+	while 1:
+		utils.LogoType(shared.LogoPath)
+		# print("1 - Função linear [f(x) = ax]") # SID
+		print("1 - Função Quadrática [f(x) = ax\N{SUPERSCRIPT TWO} + bx + c]")
+		print("x - Voltar")
+		Opt = utils.getch()
+		# if Opt == '1':
+		if Opt == '1': Functions.QuadFMenu()
+		elif Opt == 'x': return 0
+
+def EqMenu():
+	while 1:
+		utils.LogoType(shared.LogoPath)
+		# print("1 - Equação de 1° Grau") # SID
+		print("1 - Equação de 2° Grau [ax\N{SUPERSCRIPT TWO} + bx + c = 0]")
+		print("2 - Teorema de Pitágoras")
+		print("x - Voltar")
+		Opt = utils.getch()
+		# if Opt == '1': 
+		if Opt == '1': Equations.BskrMenu()
+		elif Opt == '2': Equations.PtgsMenu()
+		elif Opt == 'x': return 0
+	
 utils.LogoGen()
 while 1:
 	utils.LogoType(shared.LogoPath)
@@ -60,28 +82,18 @@ while 1:
 	print("2 - Gerador")
 	print("3 - Ferramentas")
 	print("4 - Config")
-	print("5 - Manual")
-	print("6 - Sobre")
-	print("7 - Licença")
+	print("5 - Sobre")
 	print("x - Sair")
-	InitMenuOpt = utils.getch()
-	if InitMenuOpt == '1': GameMenu()
-	elif InitMenuOpt == '2': Gen.GenMenu()
-	elif InitMenuOpt == '3' : UtilTools.UtilToolsMenu()
-	elif InitMenuOpt == '4': SettingsMenu()
-	elif InitMenuOpt == '5': # call man page
-		utils.LogoType(shared.LogoPath)
-		utils.ReadTxt('./data/man.txt')
-		utils.getch()
-	elif InitMenuOpt == '6':
+	Opt = utils.getch()
+	if Opt == '1': GameMenu()
+	elif Opt == '2': Gen.GenMenu()
+	elif Opt == '3' : UtilTools.UtilToolsMenu()
+	elif Opt == '4': SettingsMenu()
+	elif Opt == '5':
 		utils.LogoType(shared.LogoPath)
 		utils.ReadTxt('./data/info.txt')
 		utils.getch()
-	elif InitMenuOpt == '7':
-		utils.LogoType(shared.LogoPath)
-		utils.ReadTxt('LICENSE')
-		utils.getch()
-	elif InitMenuOpt == 'x':
+	elif Opt == 'x':
 		JsonFunctions.SaveAllFromCfg(SettingsMenu) # Salva as alterações 
 		utils.clear()
 		utils.exit()

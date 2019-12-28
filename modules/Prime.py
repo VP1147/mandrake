@@ -5,8 +5,9 @@ import utils, shared, prop
 
 def PrimeMenu():
 	utils.clear()
+	print("< Números Primos >")
 	print("<'exit' para sair>")
-	print("<'S' - É primo / 'n'- Ñ é primo>")
+	print("<'s' - É primo / 'n'- Ñ é primo>")
 	while 1:
 		if shared.RCount == 0:
 			Signal = Prime()
@@ -25,7 +26,7 @@ def Prime():
 	RList = []
 	a = utils.randint(shared.IntMin,shared.IntMax)
 	return PrimeVerify(input(str(a)+" é primo? "),a)
-	
+
 def PrimeVerify(r,x):
 	if r == 's' and utils.CheckForPrime(x) == True or r == 'n' and utils.CheckForPrime(x) == False:
 		print("Certo")

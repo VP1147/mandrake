@@ -5,30 +5,28 @@
 import os, math, sys
 from random import randint
 from math import sqrt
+# import numpy as np
+# import matplotlib.pyplot as plt
 
 import shared, prop
 
-if os.name == 'nt': # Caso executado sob arq, NT
-	import msvcrt
-	getch = msvcrt.getwch
-	def clear(): os.system('cls')
-elif os.name == 'posix': # Caso executado sob arq. Posix
-	from getch import getch
-	def clear(): os.system('clear')
-
-def exit():
-    sys.exit()
+def exit(): sys.exit()
 
 def ReadTxt(File):
 	with open(File, encoding='utf-8') as txt:
 		print(txt.read())
 
-def LogoGen():
-	prop.RandLogo = randint(0,13) # Random logo generator
+def LogoGen(): prop.RandLogo = randint(0,13) # Random logo generator
+
+def MinSize():
+	if os.get_terminal_size(0).lines >= 18 and os.get_terminal_size(0).columns >= 100:
+		return True
+	else: return False
 
 def LogoType(Path): # game logo
     clear()
-    ReadTxt((Path+'logotype'+str(prop.RandLogo)+'.txt'))
+    if MinSize() == True: ReadTxt((Path+'logotype'+str(prop.RandLogo)+'.txt'))
+    else: print("<-- Mandrake -->")
 
 def CheckForInt(x):
     # <DEPRECATED>
@@ -38,57 +36,39 @@ def CheckForInt(x):
     #    return False # return function value 'False' --> boolean
     #elif confirm:
     #    return True
-    try:
-        int(x)
-    except ValueError:
-        return False
-    except:
-        return True
+	try: int(x)
+	except ValueError: return False
+	except: return True
 
 def CheckForFloat(x): # Leitura de saída:
     try:              # True --> É float
         float(x)      # False --> Não é float
-    except ValueError:
-        return False
-    except:
-        return True
+    except ValueError: return False
+    except: return True
 
 def CheckForNegSqrt(x): # NegSqrt disabled. Func deprecated
-    try:
-        math.sqrt(x)
-    except ValueError:
-        return True
+    try: math.sqrt(x)
+    except ValueError: return True
     return False
 
-def SolveDelta(a,b,c): # Recebe a, b e c. Retorna o Delta.
-    return ((b**2)-4*a*c)
-
-def SolveBhaskara(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes.
-    x1 = round(float(((b*-1)+math.sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
-    x2 = round(float(((b*-1)-math.sqrt((b**2)-4*a*c))/(2*a)),FloatPrec)
-    return x1,x2 # Retorna tupla
-
-def SolveFQuad(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes e as coordenadas
+def SolveBhaskara(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes e as coordenadas
                                  # do vértice.
-    x1 = round((FloatFormat((b*-1)+round(math.sqrt(SolveDelta(a,b,c)),FloatPrec))/(2*a)),FloatPrec)
-    x2 = round((FloatFormat((b*-1)-round(math.sqrt(SolveDelta(a,b,c)),FloatPrec))/(2*a)),FloatPrec)
+    Delta = round((b**2)-4*a*c,FloatPrec)
+    x1 = round((FloatFormat((b*-1)+round(math.sqrt(Delta),FloatPrec))/(2*a)),FloatPrec)
+    x2 = round((FloatFormat((b*-1)-round(math.sqrt(Delta),FloatPrec))/(2*a)),FloatPrec)
     xv = round(((b*-1)/(2*a)),FloatPrec)
-    yv = round(((SolveDelta(a,b,c)*-1)/(4*a)),FloatPrec)
-    return x1,x2,xv,yv # Retorna tupla
-    # interseção com y = c
+    yv = round(((Delta*-1)/(4*a)),FloatPrec)
+    return Delta, x1, x2, xv, yv # Retorna tupla
 
 def CheckForFloatList(List): # Verifica se valor em uma lista é float.
     for i in range(len(List)):
-        if CheckForFloat(List[i]) == False:
-            return False
+        if CheckForFloat(List[i]) == False: return False
         
 def CheckForOneStringList(List,String): # Verifica se há string específica em uma lista.
     for i in range(len(List)):      # Leitura: True --> Há tal string. False --> Ñ há
-        if List[i] == String:
-            return True
+        if List[i] == String: return True
 
-def FloatFormat(x): # Corrige imprecisão ao operar valores flutuantes.
-    return float(format((x),'8f'))
+def FloatFormat(x): return float(format((x),'8f'))# Corrige imprecisão ao operar valores flutuantes.
 
 #class rl(Str):
 #    def LangPath(Lang):
@@ -99,9 +79,7 @@ def FloatFormat(x): # Corrige imprecisão ao operar valores flutuantes.
 #        return data[Str]
 #rl(Str) = rl(Str)
 
-def SolvePit(c1,c2): # Recebe c1 e c2, retorna hip.
-	hip = math.sqrt((c1**2)+(c2**2))
-	return hip
+def SolvePit(c1,c2): return math.sqrt((c1**2)+(c2**2)) # Recebe c1 e c2, retorna hip.
 
 def GenCircle(Min,Max,FloatPrec): # Recebe min/max. Retorna medidas correspondentes a um círculo.
 	Pi = round((4*(4*math.atan(1/5)-math.atan(1/239))),FloatPrec) # Pi calculado pela fórmula de Machin.
@@ -167,9 +145,8 @@ def MultiplyList(x): # Multiply elements one by one. Traversal method.
 	for i in x:
 		aux = aux * i
 	return aux
- 
-def GeometricMean(x): # Retorna a média geométrica da lista 'x'
-	return math.sqrt(MultiplyList(x))
+
+def GeometricMean(x): return math.sqrt(MultiplyList(x))# Retorna a média geométrica da lista 'x'
 
 def CalcFunction(f,x):	# Recebe uma função 'f' e uma tupla 'x'.
 	List = []	# Retorna uma lista com os valores com f(x)
@@ -177,3 +154,29 @@ def CalcFunction(f,x):	# Recebe uma função 'f' e uma tupla 'x'.
 	for i in range(x[0],x[1]):
 		List.append(f(i))
 	return List
+
+# TODO
+#def PlotTool(f): # Plot a function using Matplotlib and Numpy
+#	x = np.linspace(0, 2, 100)
+#	plt.plot(x, float(f), label=str(f))
+#	plt.xlabel('x')
+#	plt.ylabel('y')
+#	plt.legend()
+#	plt.show()
+
+def LinearPlot(x,List):
+	Values = []
+	for i in range(len(List)):
+		Values.append(x*List[i])
+	return Values
+
+# TODO: Add a general-purpose function generator, solver and plotter
+#		w/ Matplotlib and Numpy
+
+if os.name == 'nt': # Caso executado sob arq, NT
+	import msvcrt
+	getch = msvcrt.getwch
+	def clear(): os.system('cls')
+elif os.name == 'posix': # Caso executado sob arq. Posix
+	from getch import getch
+	def clear(): os.system('clear')

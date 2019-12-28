@@ -13,7 +13,8 @@ def BskrMenu():
 	if prop.BskrModeOpt == 'x':
 		return 0
 	utils.clear()
-	utils.ReadTxt((shared.GameLogoPath+'bhaskara.txt')) # Mode logo
+	if MinSize() == True: utils.ReadTxt((shared.GameLogoPath+'bhaskara.txt'))
+	else: print("<Bhaskara>")
 	print("<'exit' para sair>")
 	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
 	while 1:

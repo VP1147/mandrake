@@ -1,10 +1,7 @@
-# Objects visible for specific functions
-VarArrangeOpt = ''
-PtgsOpt = ''
+# Objects visible for specific functions'
 AritOpt = ''
 RandLogo = 0
 GenPtgsModeOpt = ''
 GenBskrModeOpt = ''
-BskrModeOpt = ''
 AreaModeOpt = ''
-
+ConsoleSize = 0

@@ -9,11 +9,11 @@ def UtilToolsMenu():
 	print("2 - Cálculo de π")
 	print("3 - Média aritmética")
 	print("x - Voltar")
-	UtilsToolOpt = utils.getch()
-	if UtilsToolOpt == 'x': return 0
-	elif UtilsToolOpt == '1': DivTool()
-	elif UtilsToolOpt == '2': PiTool()
-	elif UtilsToolOpt == '3': AritMeanTool()
+	Opt = utils.getch()
+	if Opt == 'x': return 0
+	elif Opt == '1': DivTool()
+	elif Opt == '2': PiTool()
+	elif Opt == '3': AritMeanTool()
 
 def DivTool():
 	utils.LogoType(shared.LogoPath)
