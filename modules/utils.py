@@ -51,19 +51,30 @@ def CheckForNegSqrt(x): # NegSqrt disabled. Func deprecated
     except ValueError: return True
     return False
 
-def SolveBhaskara(a,b,c,FloatPrec): # Recebe a, b e c. Retorna as raízes e as coordenadas
-                                 # do vértice.
-    Delta = round((b**2)-4*a*c,FloatPrec)
-    x1 = round((FloatFormat((b*-1)+round(math.sqrt(Delta),FloatPrec))/(2*a)),FloatPrec)
-    x2 = round((FloatFormat((b*-1)-round(math.sqrt(Delta),FloatPrec))/(2*a)),FloatPrec)
-    xv = round(((b*-1)/(2*a)),FloatPrec)
-    yv = round(((Delta*-1)/(4*a)),FloatPrec)
-    return Delta, x1, x2, xv, yv # Retorna tupla
+def Sig(n): # Put the '+' signal on positive nums and 0
+	if n >= 0: return '+'+str(n)
+	else: return str(n) 
+def GenBhaskara(Min,Max,FloatPrec): # Gera e resolve Bhaskara em R.
+	while True:
+		a = randint(Min,Max)
+		b = randint(Min,Max)
+		c = randint(Min,Max)
+		try:
+			Delta = round((b**2)-4*a*c,FloatPrec)
+			x1 = round((FloatFormat((b*-1)+round(math.sqrt(Delta),FloatPrec))/(2*a)),FloatPrec)
+			x2 = round((FloatFormat((b*-1)-round(math.sqrt(Delta),FloatPrec))/(2*a)),FloatPrec)
+			Xv = round(((b*-1)/(2*a)),FloatPrec)
+			Yv = round(((Delta*-1)/(4*a)),FloatPrec)
+		except: continue
+		else:
+			if a != 0 and b != 0: break
+			else: continue
+	return Delta, x1, x2, Xv, Yv, a, b, c # Retorna tupla
 
 def CheckForFloatList(List): # Verifica se valor em uma lista é float.
     for i in range(len(List)):
         if CheckForFloat(List[i]) == False: return False
-        
+
 def CheckForOneStringList(List,String): # Verifica se há string específica em uma lista.
     for i in range(len(List)):      # Leitura: True --> Há tal string. False --> Ñ há
         if List[i] == String: return True

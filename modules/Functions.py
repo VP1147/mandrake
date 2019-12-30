@@ -23,19 +23,17 @@ def QuadFMenu():
 			utils.getch()
 			return 0
 
-def QuadF(): # TODO: Optimize
-	a = utils.randint(shared.IntMin,shared.IntMax)
-	b = utils.randint(shared.IntMin,shared.IntMax)
-	c = (utils.randint(shared.IntMin,shared.IntMax))*-1 # Para evitar delta (-)
-	rs = utils.SolveBhaskara(a,b,c,shared.FloatPrec) # Recebe tupla
+def QuadF():
+	Delta, x1, x2, Xv, Yv, a, b, c = utils.GenBhaskara(shared.IntMin,shared.IntMax,shared.FloatPrec)
+	rs = (Delta,x1,x2,Xv,Yv)
 	l = []
 	q = ("Delta","x1 (+)","x2 (-)","Xv","Yx")
-	print(str(a)+"x\N{SUPERSCRIPT TWO} + "+str(b)+"x + ("+str(c)+")")
+	print(utils.Sig(a),"x\N{SUPERSCRIPT TWO} ",utils.Sig(b),"x ",utils.Sig(c))
 	for i in range(len(rs)):
 		r = input(q[i]+" = ")
 		if shared.RCount == 0 and r == 'exit': return 'exit'
 		if utils.CheckForFloat(r) == False: l.append('Nula')
-		if r == rs[i]: # Caso certo
+		elif r == rs[i]: # Caso certo
 			print("Certo")
 			l.append('Certo')
 		else: # Caso diferente
@@ -65,4 +63,3 @@ def SimpleFMenu():
 
 # TODO
 #def SimpleF():
-

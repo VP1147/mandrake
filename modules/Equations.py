@@ -30,11 +30,11 @@ def PtgsMenu():
 			utils.getch()
 			return 0
 
-def Ptgs(Opt):
+def Ptgs(Opt): # TODO: Optimize
 	x = utils.randint(shared.IntMin,shared.IntMax)
 	y = utils.randint(shared.IntMin,shared.IntMax)
 	z = utils.randint(shared.IntMin,shared.IntMax)
-	if Opt == '1': # P/ otimizar ...
+	if Opt == '1':
 		if x >= y and x >= z: # Caso x maior
 			r = input("c1 = "+str(y)+", c2 = "+str(z)+", hip = raiz quadrada de ")
 			rs = (y**2)+(z**2)
@@ -78,7 +78,7 @@ def BskrMenu():
 	if utils.MinSize() == True: utils.ReadTxt((shared.GameLogoPath+'bhaskara.txt')) # Mode logo
 	else: print("< Bhaskara >")
 	print("<'exit' para sair>")
-	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
+	print("<Precisão de ",shared.FloatPrec," decimal(is)>")
 	while 1:
 		if shared.RCount == 0:
 			Signal = Bhaskara(Opt)
@@ -94,34 +94,32 @@ def BskrMenu():
 			return 0
 
 def Bhaskara(Opt):
-	a = utils.randint(shared.IntMin,shared.IntMax)
-	b = utils.randint(shared.IntMin,shared.IntMax)
-	c = (utils.randint(shared.IntMin,shared.IntMax))*-1 # Para evitar delta (-)
-	Delta, x1, x2, xv, yv = utils.SolveBhaskara(a,b,c,shared.FloatPrec)
+	Delta, x1, x2, xv, yv, a, b, c = utils.GenBhaskara(shared.IntMin, shared.IntMax, shared.FloatPrec)
 	l = []
 	if Opt == '1':
-		r = input(str(a)+"x\N{SUPERSCRIPT TWO} + "+str(b)+"x + ("+str(c)+"). Delta = ")
+		print(utils.Sig(a),"x\N{SUPERSCRIPT TWO} ",utils.Sig(b),"x ",utils.Sig(c))
+		r = input("Delta = ")
 		if r == 'exit' and shared.RCount == 0: return 'exit'
 		if utils.CheckForFloat(r) == False: l.append('Nula')
 		if r == Delta: 
 			print("Certo")
 			l.append('Certo')
 		else: 
-			print("O correto seria "+str(Delta)+".")
+			print("O correto seria ",Delta,".")
 			l.append('Errado')
 	elif Opt == '2':
 		q = ("Delta","x1 (+)","x2 (-)")
 		rs = (Delta,x1,x2)
-		print(str(a)+"x\N{SUPERSCRIPT TWO} + "+str(b)+"x + ("+str(c)+")")
+		print(utils.Sig(a),"x\N{SUPERSCRIPT TWO} ",utils.Sig(b),"x ",utils.Sig(c))
 		for i in range(len(rs)):
 			r = input(q[i]+" = ")
 			if r == 'exit' and shared.RCount == 0: return 'exit'
-			if utils.CheckForFloat(r) == False: l.append('Nula')
+			elif utils.CheckForFloat(r) == False: l.append('Nula')
 			if r == rs[i]: 
 				print("Certo")
 				l.append('Certo')
 			else: 
-				print("O correto seria "+str(rs[i])+".")
+				print("O correto seria ",rs[i],".")
 				l.append('Errado')
 	return l
 
