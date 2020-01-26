@@ -1,38 +1,39 @@
 # -*- encoding: utf-8 -*-
 # library for Mandrake | by vp1147
 
-import shared, prop, utils
+import shared as s
+import utils as u
 
 def QuadFMenu():
-	utils.clear()
-	if utils.MinSize() == True: utils.ReadTxt((shared.GameLogoPath+'function.txt')) # Mode logo
+	u.clear()
+	if u.MinSize() == True: u.ReadTxt((s.GameLogoPath+'function.txt')) # Mode logo
 	else: print("< f(x) >")
 	print("<'exit' para sair>")
-	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
+	print("<Precisão de "+str(s.FloatPrec)+" decimal(is)>")
 	while 1:
-		if shared.RCount == 0:
+		if s.RCount == 0:
 			Signal = QuadF()
 			if Signal == 'exit': return 0
 		else:
 			List = []
-			for Count in range(shared.RCount):
+			for Count in range(s.RCount):
 				List.insert(Count,QuadF())
 			print("-- Concluido --")
-			for i in range(shared.RCount):
+			for i in range(s.RCount):
 				print(str((i+1))+" - "+', '.join(List[i]))
-			utils.getch()
+			u.getch()
 			return 0
 
 def QuadF():
-	Delta, x1, x2, Xv, Yv, a, b, c = utils.GenBhaskara(shared.IntMin,shared.IntMax,shared.FloatPrec)
+	Delta, x1, x2, Xv, Yv, a, b, c = u.GenBhaskara(s.IntMin,s.IntMax,s.FloatPrec)
 	rs = (Delta,x1,x2,Xv,Yv)
 	l = []
 	q = ("Delta","x1 (+)","x2 (-)","Xv","Yx")
-	print(utils.Sig(a),"x\N{SUPERSCRIPT TWO} ",utils.Sig(b),"x ",utils.Sig(c))
+	print(u.Sig(a),"x\N{SUPERSCRIPT TWO} ",u.Sig(b),"x ",u.Sig(c))
 	for i in range(len(rs)):
 		r = input(q[i]+" = ")
-		if shared.RCount == 0 and r == 'exit': return 'exit'
-		if utils.CheckForFloat(r) == False: l.append('Nula')
+		if s.RCount == 0 and r == 'exit': return 'exit'
+		if u.CheckForFloat(r) == False: l.append('Nula')
 		elif r == rs[i]: # Caso certo
 			print("Certo")
 			l.append('Certo')
@@ -42,24 +43,21 @@ def QuadF():
 	return l
 
 def SimpleFMenu():
-	utils.clear()
-	if utils.MinSize() == True: utils.ReadTxt((shared.GameLogoPath+'function.txt')) # Mode logo
+	u.clear()
+	if u.MinSize() == True: u.ReadTxt((s.GameLogoPath+'function.txt')) # Mode logo
 	else: print("< f(x) >")
 	print("<'exit' para sair>")
-	print("<Precisão de "+str(shared.FloatPrec)+" decimal(is)>")
+	print("<Precisão de "+str(s.FloatPrec)+" decimal(is)>")
 	while 1:
-		if shared.RCount == 0:
+		if s.RCount == 0:
 			Signal = SimpleF()
 			if Signal == 'exit': return 0
 		else:
 			List = []
-			for Count in range(shared.RCount):
+			for Count in range(s.RCount):
 				List.insert(Count,SimpleF())
 			print("-- Concluido --")
-			for i in range(shared.RCount):
+			for i in range(s.RCount):
 				print(str((i+1))+" - "+', '.join(List[i]))
-			utils.getch()
+			u.getch()
 			return 0
-
-# TODO
-#def SimpleF():

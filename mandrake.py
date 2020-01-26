@@ -3,7 +3,6 @@
 
 # External libs
 from random import randint
-import os
 import sys
 
 # Own libs

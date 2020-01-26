@@ -8,7 +8,7 @@ from math import sqrt
 # import numpy as np
 # import matplotlib.pyplot as plt
 
-import shared, prop
+import shared as s
 
 def exit(): sys.exit()
 
@@ -16,7 +16,7 @@ def ReadTxt(File):
 	with open(File, encoding='utf-8') as txt:
 		print(txt.read())
 
-def LogoGen(): prop.RandLogo = randint(0,13) # Random logo generator
+def LogoGen(): RandLogo = randint(0,13) # Random logo generator
 
 def MinSize():
 	if os.get_terminal_size(0).lines >= 18 and os.get_terminal_size(0).columns >= 100:
@@ -25,7 +25,7 @@ def MinSize():
 
 def LogoType(Path): # game logo
     clear()
-    if MinSize() == True: ReadTxt((Path+'logotype'+str(prop.RandLogo)+'.txt'))
+    if MinSize() == True: ReadTxt((Path+'logotype'+str(RandLogo)+'.txt'))
     else: print("<-- Mandrake -->")
 
 def CheckForInt(x):
@@ -53,7 +53,8 @@ def CheckForNegSqrt(x): # NegSqrt disabled. Func deprecated
 
 def Sig(n): # Put the '+' signal on positive nums and 0
 	if n >= 0: return '+'+str(n)
-	else: return str(n) 
+	else: return str(n)
+
 def GenBhaskara(Min,Max,FloatPrec): # Gera e resolve Bhaskara em R.
 	while True:
 		a = randint(Min,Max)
@@ -80,15 +81,6 @@ def CheckForOneStringList(List,String): # Verifica se há string específica em 
         if List[i] == String: return True
 
 def FloatFormat(x): return float(format((x),'8f'))# Corrige imprecisão ao operar valores flutuantes.
-
-#class rl(Str):
-#    def LangPath(Lang):
-#        if shared.Lang == 'pt_br':
-#            return ('./languages/pt_br')
-#    def ReadJson(Str,Path): # Recebe local do .json e nome; retorna valor corresp. 
-#        data = json.loads(open(Path).read())
-#        return data[Str]
-#rl(Str) = rl(Str)
 
 def SolvePit(c1,c2): return math.sqrt((c1**2)+(c2**2)) # Recebe c1 e c2, retorna hip.
 
@@ -127,8 +119,8 @@ def CheckForPrime(x): # Leitura:
 				return False # Ñ é primo
 	return True # É primo
 
-def DivCheck(x):
-	List = []
+def DivCheck(x):	# Recebe x, retorna lista de números que 
+	List = []		# x é divisível por.
 	for i in range(1,x):
 		if int(x/i) == (x/i):
 			List.append(i)
@@ -160,8 +152,8 @@ def MultiplyList(x): # Multiply elements one by one. Traversal method.
 def GeometricMean(x): return math.sqrt(MultiplyList(x))# Retorna a média geométrica da lista 'x'
 
 def CalcFunction(f,x):	# Recebe uma função 'f' e uma tupla 'x'.
-	List = []	# Retorna uma lista com os valores com f(x)
-			# variando entre x[0] e x[1].
+	List = []			# Retorna uma lista com os valores com f(x)
+						# de x[0] a x[1].
 	for i in range(x[0],x[1]):
 		List.append(f(i))
 	return List
@@ -184,10 +176,21 @@ def LinearPlot(x,List):
 # TODO: Add a general-purpose function generator, solver and plotter
 #		w/ Matplotlib and Numpy
 
-if os.name == 'nt': # Caso executado sob arq, NT
+if os.name == 'nt': # Caso executado em sistema NT
 	import msvcrt
 	getch = msvcrt.getwch
 	def clear(): os.system('cls')
-elif os.name == 'posix': # Caso executado sob arq. Posix
+elif os.name == 'posix': # Caso executado em sistema Posix
 	from getch import getch
 	def clear(): os.system('clear')
+
+def CheckAnswer(rs,r):
+	if s.RCount == 0 and r == 'exit': return 'exit'
+	if CheckForFloat(r) == False: # Caso não-float
+		return 'Nula'
+	elif float(r) == rs: 
+		print("Certo")
+		return 'Certo'
+	else: 
+		print("O certo seria "+str(rs))
+		return 'Errado'

@@ -1,12 +1,12 @@
 # Objects visible for all modules
-import json, sys
+import json as j
 
-with open('./data/settings.json','r') as ReadAll:
-	DictAll = json.load(ReadAll)
-IntMin = int(DictAll.get("IntMin"))
-IntMax = int(DictAll.get("IntMax"))
-FloatPrec = int(DictAll.get("FloatPrec"))
-RCount = int(DictAll.get("RCount"))
+with open('./data/settings.json','r') as r:
+	d = j.load(r)
+IntMin = int(d.get("IntMin"))
+IntMax = int(d.get("IntMax"))
+FloatPrec = int(d.get("FloatPrec"))
+RCount = int(d.get("RCount"))
 
 GameLogoPath = './data/logotypes/ModeLogo/'
 LogoPath = './data/logotypes/'
