@@ -72,6 +72,14 @@ def GenBhaskara(Min,Max,FloatPrec): # Gera e resolve Bhaskara em R.
 			else: continue
 	return Delta, x1, x2, Xv, Yv, a, b, c # Retorna tupla
 
+def SolveBhaskara(a,b,c): # Recebe a, b, c (ax^2 + bx + c). Retorna Delta, x1, x2, Xv, Yv.
+	Delta = round((b**2)-4*a*c,s.FloatPrec)
+	x1 = round((FloatFormat((b*-1)+round(math.sqrt(Delta),s.FloatPrec))/(2*a)),s.FloatPrec)
+	x2 = round((FloatFormat((b*-1)-round(math.sqrt(Delta),s.FloatPrec))/(2*a)),s.FloatPrec)
+	Xv = round(((b*-1)/(2*a)),s.FloatPrec)
+	Yv = round(((Delta*-1)/(4*a)),s.FloatPrec)
+	return Delta, x1, x2, Xv, Yv
+
 def CheckForFloatList(List): # Verifica se valor em uma lista é float.
     for i in range(len(List)):
         if CheckForFloat(List[i]) == False: return False
