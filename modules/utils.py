@@ -16,7 +16,7 @@ def ReadTxt(File):
 	with open(File, encoding='utf-8') as txt:
 		print(txt.read())
 
-def LogoGen(): RandLogo = randint(0,13) # Random logo generator
+def LogoGen(): s.RandLogo = randint(0,13) # Random logo generator
 
 def MinSize():
 	if os.get_terminal_size(0).lines >= 18 and os.get_terminal_size(0).columns >= 100:
@@ -25,7 +25,7 @@ def MinSize():
 
 def LogoType(Path): # game logo
     clear()
-    if MinSize() == True: ReadTxt((Path+'logotype'+str(RandLogo)+'.txt'))
+    if MinSize() == True: ReadTxt((Path+'logotype'+str(s.RandLogo)+'.txt'))
     else: print("<-- Mandrake -->")
 
 def CheckForInt(x):
@@ -189,8 +189,16 @@ if os.name == 'nt': # Caso executado em sistema NT
 	getch = msvcrt.getwch
 	def clear(): os.system('cls')
 elif os.name == 'posix': # Caso executado em sistema Posix
-	from getch import getch
 	def clear(): os.system('clear')
+	def getch(): # Gets a single character from STDIO.
+		import tty, termios
+		fd = sys.stdin.fileno()
+		old = termios.tcgetattr(fd)
+		try:
+			tty.setraw(fd)
+			return sys.stdin.read(1)
+		finally:
+			termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
 def CheckAnswer(rs,r):
 	if s.RCount == 0 and r == 'exit': return 'exit'

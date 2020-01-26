@@ -10,3 +10,4 @@ RCount = int(d.get("RCount"))
 
 GameLogoPath = './data/logotypes/ModeLogo/'
 LogoPath = './data/logotypes/'
+RandLogo = 0
