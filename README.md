@@ -11,21 +11,13 @@ Inclui:
 - Geração de exercícios.
 - Funções úteis (utils.py)
 
-## Linux
-### Instale as dependências
-Debian
+
+## Debian
 ```
-$ sudo apt install git python3 python3-pip
-```
-```
-$ pip3 install getch
-```
-### Abra o arquivo com o Python3
-```
+$ sudo apt install git python3
 $ git clone https://github.com/vp1147/mandrake
 $ cd ~/mandrake
 $ python3 mandrake.py
-```
 
 ## Windows
 Abra o arquivo mandrake.py em um interpretador Python3 (https://www.python.org/downloads/windows/).
