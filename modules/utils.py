@@ -1,5 +1,5 @@
 # # -*- encoding: utf-8 -*-
-# library for Mandrake | by vp1147
+# Library for Mandrake | by vp1147
 
 # External libs
 import os, math, sys

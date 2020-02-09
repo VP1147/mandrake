@@ -34,30 +34,10 @@ def QuadF():
 		r = input(q[i]+" = ")
 		if s.RCount == 0 and r == 'exit': return 'exit'
 		if u.CheckForFloat(r) == False: l.append('Nula')
-		elif r == rs[i]: # Caso certo
+		elif float(r) == rs[i]:
 			print("Certo")
 			l.append('Certo')
-		else: # Caso diferente
+		else:
 			print("O correto seria "+str(rs[i])+".")
 			l.append('Errado')
 	return l
-
-def SimpleFMenu():
-	u.clear()
-	if u.MinSize() == True: u.ReadTxt((s.GameLogoPath+'function.txt')) # Mode logo
-	else: print("< f(x) >")
-	print("<'exit' para sair>")
-	print("<Precisão de "+str(s.FloatPrec)+" decimal(is)>")
-	while 1:
-		if s.RCount == 0:
-			Signal = SimpleF()
-			if Signal == 'exit': return 0
-		else:
-			List = []
-			for Count in range(s.RCount):
-				List.insert(Count,SimpleF())
-			print("-- Concluido --")
-			for i in range(s.RCount):
-				print(str((i+1))+" - "+', '.join(List[i]))
-			u.getch()
-			return 0

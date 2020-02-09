@@ -36,21 +36,20 @@ def Ptgs(Opt):
 	hip = round(u.sqrt((c1**2)+(c2**2)),s.FloatPrec)
 	if Opt == '1': # Simples: calc raiz de hip
 		print("c1 = ",c1,", c2 = ",c2,", hip = √")
-		r = input()
 		rs = (c1**2+c2**2)
-	elif Opt == '2': # Normal: calcula hip 
+	elif Opt == '2': # Normal: calcula hip
 		print("c1 = ",c1,", c2 = ",c2,", hip = ")
-		r = input()
 		rs = hip
+	r = input()
 	if u.CheckForFloat(r) == False:
 		if r == 'exit': return 'exit'
 		else: return 'Nula'
 	else:
-		if float(r) == rs: 
+		if float(r) == rs:
 			print("Certo")
 			return 'Certo'
-		else: 
-			print("O certo seria ",rs)
+		else:
+			print("O certo seria ",rs,".")
 			return 'Errado'
 
 def BskrMenu():
@@ -88,10 +87,10 @@ def Bhaskara(Opt):
 		r = input("Delta = ")
 		if r == 'exit' and s.RCount == 0: return 'exit'
 		if u.CheckForFloat(r) == False: l.append('Nula')
-		elif r == Delta: 
+		elif float(r) == Delta: # P/ evitar diferença entre tipos de dados
 			print("Certo")
 			l.append('Certo')
-		else: 
+		else:
 			print("O correto seria ",Delta,".")
 			l.append('Errado')
 	elif Opt == '2':
@@ -101,12 +100,11 @@ def Bhaskara(Opt):
 		for i in range(len(rs)):
 			r = input(q[i]+" = ")
 			if r == 'exit' and s.RCount == 0: return 'exit'
-			if u.CheckForFloat(r) == False: 
-				l.append('Nula')
-			elif r == rs[i]: 
+			if u.CheckForFloat(r) == False: l.append('Nula')
+			elif float(r) == rs[i]:
 				print("Certo")
 				l.append('Certo')
-			else: 
+			else:
 				print("O correto seria ",rs[i],".")
 				l.append('Errado')
 	return l
